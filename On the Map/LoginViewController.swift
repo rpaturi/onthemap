@@ -10,10 +10,16 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var facebookLoginButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,7 +27,7 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
     // MARK: - Navigation
 
@@ -32,4 +38,22 @@ class LoginViewController: UIViewController {
     }
     */
 
+}
+
+
+extension LoginViewController: UITextFieldDelegate {
+    //dismiss keyboard when screen is tapped
+    @IBAction func dismissKeyboard(sender: AnyObject) {
+        if usernameTextField.isFirstResponder() || passwordTextField.isFirstResponder() {
+            usernameTextField.resignFirstResponder()
+            passwordTextField.resignFirstResponder()
+        }
+    }
+    
+    //dismiss keyboard when "return" on keyboard is tapped
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
 }
