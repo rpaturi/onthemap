@@ -7,10 +7,10 @@
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Information Posting View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="InformationPostingViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -109,7 +109,7 @@
         <!--On the Map-->
         <scene sceneID="LEs-sX-0hi">
             <objects>
-                <viewController id="WSf-Tl-kS6" sceneMemberID="viewController">
+                <viewController id="WSf-Tl-kS6" customClass="TableViewViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fyy-Ou-5UA"/>
                         <viewControllerLayoutGuide type="bottom" id="Z5z-vx-8ar"/>
@@ -156,7 +156,7 @@
         <!--On the Map-->
         <scene sceneID="u4B-bX-7DP">
             <objects>
-                <viewController id="5Im-vb-vvd" sceneMemberID="viewController">
+                <viewController id="5Im-vb-vvd" customClass="MapViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YNv-aY-DNP"/>
                         <viewControllerLayoutGuide type="bottom" id="e08-6V-Fk5"/>
