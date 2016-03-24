@@ -35,6 +35,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DE326C411CA478C700D149D2 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
 		DEBED0611CA3455100AC1EE0 = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +63,7 @@
 			children = (
 				DEBED06D1CA3455200AC1EE0 /* AppDelegate.swift */,
 				DEBED06F1CA3455200AC1EE0 /* ViewController.swift */,
+				DE326C411CA478C700D149D2 /* ViewControllers */,
 				DEBED0711CA3455200AC1EE0 /* Main.storyboard */,
 				DEBED0741CA3455200AC1EE0 /* Assets.xcassets */,
 				DEBED0761CA3455200AC1EE0 /* LaunchScreen.storyboard */,
@@ -284,6 +292,7 @@
 				DEBED07E1CA3455200AC1EE0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
