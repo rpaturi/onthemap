@@ -25,7 +25,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Where are you studying today? " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o9E-yk-24o">
                                         <rect key="frame" x="179" y="86" width="242" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -184,6 +184,9 @@
                             <barButtonItem image="Pin icon-Small" id="U1C-cu-Hu5"/>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="WsD-vt-q9z" id="R1Y-xk-hOD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iGq-pD-z5W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -236,6 +239,9 @@
                                 <state key="normal" title="Login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="loginButton:" destination="aa3-Bp-asO" eventType="touchUpInside" id="XvA-Aa-UQ6"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Afi-Wm-fAp">
                                 <rect key="frame" x="20" y="550" width="560" height="30"/>
@@ -251,11 +257,15 @@
                                     <constraint firstAttribute="width" constant="240" id="pAU-On-Lht"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don’t have an account? Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YpF-SV-l39">
-                                <rect key="frame" x="175" y="372" width="245" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="8dB-eQ-zxI"/>
-                                </constraints>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mdh-fa-byN">
+                                <rect key="frame" x="191" y="377" width="219" height="30"/>
+                                <state key="normal" title="Don’t have an account? Sign Up"/>
+                                <connections>
+                                    <action selector="signUpForUdacityAccount:" destination="aa3-Bp-asO" eventType="touchUpInside" id="Fmq-JA-Yxq"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UMO-x4-itm">
+                                <rect key="frame" x="20" y="425" width="560" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -266,9 +276,9 @@
                         <constraints>
                             <constraint firstItem="Jqo-MX-Gdh" firstAttribute="top" secondItem="sUj-SD-mOM" secondAttribute="bottom" constant="15" id="1eE-2f-Eof"/>
                             <constraint firstItem="sUj-SD-mOM" firstAttribute="top" secondItem="tft-ug-Cro" secondAttribute="bottom" constant="16" id="88I-qt-hfh"/>
-                            <constraint firstItem="YpF-SV-l39" firstAttribute="trailing" secondItem="w5R-Rg-LOc" secondAttribute="trailing" id="8N9-3S-Qj7"/>
                             <constraint firstItem="Jqo-MX-Gdh" firstAttribute="centerY" secondItem="mUY-4A-7hP" secondAttribute="centerY" id="C4M-dE-HU6"/>
                             <constraint firstItem="Jqo-MX-Gdh" firstAttribute="trailing" secondItem="sUj-SD-mOM" secondAttribute="trailing" id="DSl-JR-8wx"/>
+                            <constraint firstItem="mdh-fa-byN" firstAttribute="centerX" secondItem="rdB-Fv-F05" secondAttribute="centerX" id="K38-O7-yjA"/>
                             <constraint firstItem="sUj-SD-mOM" firstAttribute="leading" secondItem="mUY-4A-7hP" secondAttribute="leadingMargin" id="Kuk-KH-RwY"/>
                             <constraint firstItem="rdB-Fv-F05" firstAttribute="leading" secondItem="Jqo-MX-Gdh" secondAttribute="leading" id="O4u-S2-fMg"/>
                             <constraint firstItem="Afi-Wm-fAp" firstAttribute="trailing" secondItem="rdB-Fv-F05" secondAttribute="trailing" id="OAj-El-Zph"/>
@@ -278,10 +288,13 @@
                             <constraint firstAttribute="bottom" secondItem="Afi-Wm-fAp" secondAttribute="bottom" constant="20" symbolic="YES" id="buI-fc-qax"/>
                             <constraint firstItem="tft-ug-Cro" firstAttribute="centerX" secondItem="sUj-SD-mOM" secondAttribute="centerX" id="ch3-9n-HFO"/>
                             <constraint firstItem="w5R-Rg-LOc" firstAttribute="top" secondItem="fnz-EB-uYC" secondAttribute="bottom" constant="33" id="dJc-lq-FS2"/>
+                            <constraint firstItem="UMO-x4-itm" firstAttribute="top" secondItem="mdh-fa-byN" secondAttribute="bottom" constant="18" id="ilI-LW-Obb"/>
                             <constraint firstItem="w5R-Rg-LOc" firstAttribute="centerX" secondItem="mUY-4A-7hP" secondAttribute="centerX" id="jO2-GE-ovh"/>
-                            <constraint firstItem="YpF-SV-l39" firstAttribute="top" secondItem="rdB-Fv-F05" secondAttribute="bottom" constant="13" id="p4w-Pr-J0u"/>
+                            <constraint firstItem="UMO-x4-itm" firstAttribute="leading" secondItem="rdB-Fv-F05" secondAttribute="leading" id="oGc-LI-eF3"/>
                             <constraint firstItem="rdB-Fv-F05" firstAttribute="top" secondItem="Jqo-MX-Gdh" secondAttribute="bottom" constant="14" id="ppt-c9-oC6"/>
                             <constraint firstItem="Afi-Wm-fAp" firstAttribute="leading" secondItem="rdB-Fv-F05" secondAttribute="leading" id="t8F-VI-pte"/>
+                            <constraint firstItem="UMO-x4-itm" firstAttribute="trailing" secondItem="rdB-Fv-F05" secondAttribute="trailing" id="x9j-cz-2y0"/>
+                            <constraint firstItem="mdh-fa-byN" firstAttribute="top" secondItem="rdB-Fv-F05" secondAttribute="bottom" constant="18" id="yOV-3I-zlP"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="QSI-Cc-0xr" appends="YES" id="gai-nl-toH"/>
@@ -290,9 +303,9 @@
                     <connections>
                         <outlet property="facebookLoginButton" destination="Afi-Wm-fAp" id="KvO-zs-Q6W"/>
                         <outlet property="loginButton" destination="rdB-Fv-F05" id="2vb-Zb-ov7"/>
+                        <outlet property="loginErrorLabel" destination="UMO-x4-itm" id="ddu-Tt-viz"/>
                         <outlet property="passwordTextField" destination="Jqo-MX-Gdh" id="RBW-Xp-7Yt"/>
                         <outlet property="usernameTextField" destination="sUj-SD-mOM" id="qKK-ua-ArR"/>
-                        <segue destination="WXg-8Y-lpc" kind="show" id="ux3-nr-anC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="98s-ah-Ajr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -307,7 +320,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="dqp-o9-gBW">
             <objects>
-                <tabBarController id="WXg-8Y-lpc" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MapTabBarController" id="WXg-8Y-lpc" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="wnA-oQ-eaL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
