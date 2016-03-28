@@ -16,7 +16,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var facebookLoginButton: UIButton!
     @IBOutlet weak var loginErrorLabel: UILabel!
     
-    var appDelegate: AppDelegate!
+    var userID: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -106,16 +106,20 @@ class LoginViewController: UIViewController {
             }
             
             /* 6. Use the data */
+            
             guard let account = parsedResult["account"] as? [String : AnyObject] else {
                 print("We could not find \(parsedResult["account"])")
                 return
             }
             
-//            guard let userKey = account["key"] as? Int else {
-//                print("We could not find \(parsedResult["key"]) in \(account)")
-//                return
-//            }
-//            self.appDelegate.userID = userKey
+            
+            guard let userKey = account["key"] as? String else {
+                print("We could not find \(parsedResult["key"]) in \(account)")
+                return
+            }
+
+            self.userID = userKey
+            
             
             dispatch_async(dispatch_get_main_queue()) {
                 self.loginErrorLabel.text = ""
