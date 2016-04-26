@@ -16,6 +16,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var facebookLoginButton: UIButton!
     @IBOutlet weak var loginErrorLabel: UILabel!
     
+    var studentInfo = StudentInformation.sharedInstance()
+    
     var appDelegate: AppDelegate!
     var userID: String?
     
@@ -30,8 +32,6 @@ class LoginViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
     
     //Allow user to sign up for a Udacity.com account
     @IBAction func signUpForUdacityAccount(sender: AnyObject) {
@@ -110,9 +110,8 @@ class LoginViewController: UIViewController {
                 return
             }
 
-            self.appDelegate.userID = userKey
-            
-            
+            self.studentInfo.userID = userKey
+
             dispatch_async(dispatch_get_main_queue()) {
                 self.loginErrorLabel.text = ""
                 //Once logged in, show the map view in the tab bar controller
