@@ -16,13 +16,14 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var facebookLoginButton: UIButton!
     @IBOutlet weak var loginErrorLabel: UILabel!
     
+    var appDelegate: AppDelegate!
     var userID: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
-        
+        // get the app delegate
+        appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,15 +32,6 @@ class LoginViewController: UIViewController {
     }
     
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     //Allow user to sign up for a Udacity.com account
     @IBAction func signUpForUdacityAccount(sender: AnyObject) {
@@ -118,7 +110,7 @@ class LoginViewController: UIViewController {
                 return
             }
 
-            self.userID = userKey
+            self.appDelegate.userID = userKey
             
             
             dispatch_async(dispatch_get_main_queue()) {
