@@ -118,27 +118,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cUN-Kj-it5">
-                                <rect key="frame" x="0.0" y="64" width="608" height="487"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cUN-Kj-it5">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="F0x-Hu-9LE">
-                                        <rect key="frame" x="0.0" y="92" width="608" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StudentInformationCell" textLabel="RkN-vD-2qz" detailTextLabel="ePc-Nr-Sot" rowHeight="60" style="IBUITableViewCellStyleSubtitle" id="F0x-Hu-9LE">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F0x-Hu-9LE" id="F57-JY-2ND">
-                                            <rect key="frame" x="0.0" y="0.0" width="608" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RkN-vD-2qz">
+                                                    <rect key="frame" x="15" y="14" width="31.5" height="19.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ePc-Nr-Sot">
+                                                    <rect key="frame" x="15" y="33.5" width="40.5" height="13.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="WSf-Tl-kS6" id="NNo-Ar-kXn"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="cUN-Kj-it5" firstAttribute="bottom" secondItem="Z5z-vx-8ar" secondAttribute="top" id="M51-XB-YlY"/>
-                            <constraint firstItem="cUN-Kj-it5" firstAttribute="top" secondItem="fyy-Ou-5UA" secondAttribute="bottom" id="SlQ-a9-qPi"/>
+                            <constraint firstItem="cUN-Kj-it5" firstAttribute="bottom" secondItem="Z5z-vx-8ar" secondAttribute="top" constant="49" id="M51-XB-YlY"/>
+                            <constraint firstItem="cUN-Kj-it5" firstAttribute="top" secondItem="fyy-Ou-5UA" secondAttribute="bottom" constant="-64" id="SlQ-a9-qPi"/>
                             <constraint firstItem="cUN-Kj-it5" firstAttribute="leading" secondItem="7W6-MB-N9r" secondAttribute="leading" id="VeQ-P8-SVp"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="cUN-Kj-it5" secondAttribute="trailing" constant="-28" id="hvM-6b-Jvv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cUN-Kj-it5" secondAttribute="trailing" constant="-20" id="hvM-6b-Jvv"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="On the Map" id="b4u-zK-k4j">

@@ -16,11 +16,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var facebookLoginButton: UIButton!
     @IBOutlet weak var loginErrorLabel: UILabel!
     
-    var studentInfo = StudentInformation.sharedInstance()
-    
     var appDelegate: AppDelegate!
-    var userID: String?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -110,13 +107,13 @@ class LoginViewController: UIViewController {
                 return
             }
 
-            self.studentInfo.userID = userKey
+            self.appDelegate.studentInfo.userID = userKey
 
             dispatch_async(dispatch_get_main_queue()) {
                 self.loginErrorLabel.text = ""
                 //Once logged in, show the map view in the tab bar controller
                 let controller = self.storyboard!.instantiateViewControllerWithIdentifier("MapTabBarController") as! UITabBarController
-                self.presentViewController(controller, animated: true, completion: nil)
+                self.presentViewController(controller, animated: false, completion: nil)
             }
 
         }
@@ -127,8 +124,6 @@ class LoginViewController: UIViewController {
     }
 
 }
-
-
 
 extension LoginViewController: UITextFieldDelegate {
     //dismiss keyboard when screen is tapped

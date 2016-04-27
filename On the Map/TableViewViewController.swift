@@ -8,28 +8,42 @@
 
 import UIKit
 
-class TableViewViewController: UIViewController {
+class TableViewViewController: UIViewController, UITableViewDataSource{
 
+    var appDelegate: AppDelegate!
+    var studentCount: Int!
+    var studentData: [Student]!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        // get the app delegate
+        appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    
     }
     
+    override func viewWillAppear(animated: Bool) {
+        if let student = self.appDelegate.studentInfo.studentInfo {
+            studentData = student
+            studentCount = student.count
+        }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
-    */
+
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return studentCount
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("StudentInformationCell", forIndexPath: indexPath)
+        
+        let student = studentData[indexPath.row]
+        
+        cell.textLabel?.text = "\(student.firstName) \(student.lastName)"
+        cell.detailTextLabel?.text = "\(student.mediaURL)"
+        return cell
+    }
+
 
 }

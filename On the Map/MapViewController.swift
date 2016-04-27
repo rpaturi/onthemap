@@ -76,8 +76,11 @@ class MapViewController: UIViewController {
             }
             
             /* 6. Use the data */
-            self.students = Student.studentsFromResults(results)
-            self.createMapAnnotation(self.students)
+            self.appDelegate.studentInfo.studentInfo = Student.studentsFromResults(results)
+            if let studentInfo = self.appDelegate.studentInfo.studentInfo {
+                self.createMapAnnotation(studentInfo)
+            }
+            
         }
         /* Resume Task */
         task.resume()
