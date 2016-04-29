@@ -13,6 +13,7 @@
 		DE326C471CA47AA400D149D2 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE326C461CA47AA400D149D2 /* MapViewController.swift */; };
 		DE326C491CA47AB900D149D2 /* TableViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE326C481CA47AB900D149D2 /* TableViewViewController.swift */; };
 		DE326C4B1CA47AD400D149D2 /* InformationPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE326C4A1CA47AD400D149D2 /* InformationPostingViewController.swift */; };
+		DE9DFDE61CD40CCC0072445C /* Constants .swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9DFDE51CD40CCC0072445C /* Constants .swift */; };
 		DEBED06E1CA3455200AC1EE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBED06D1CA3455200AC1EE0 /* AppDelegate.swift */; };
 		DEBED0731CA3455200AC1EE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEBED0711CA3455200AC1EE0 /* Main.storyboard */; };
 		DEBED0751CA3455200AC1EE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEBED0741CA3455200AC1EE0 /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 		DE326C461CA47AA400D149D2 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		DE326C481CA47AB900D149D2 /* TableViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewViewController.swift; sourceTree = "<group>"; };
 		DE326C4A1CA47AD400D149D2 /* InformationPostingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationPostingViewController.swift; sourceTree = "<group>"; };
+		DE9DFDE51CD40CCC0072445C /* Constants .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Constants .swift"; sourceTree = "<group>"; };
 		DEBED06A1CA3455100AC1EE0 /* On the Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On the Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEBED06D1CA3455200AC1EE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DEBED0721CA3455200AC1EE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -53,6 +55,7 @@
 				DEC36CF11CA9CA9C008BF861 /* Student.swift */,
 				DE0A825A1CC4129D001197B6 /* StudentClient.swift */,
 				DE0A82581CC40FBF001197B6 /* StudentConvenience.swift */,
+				DE9DFDE51CD40CCC0072445C /* Constants .swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 				DE0A825B1CC4129D001197B6 /* StudentClient.swift in Sources */,
 				DEBED06E1CA3455200AC1EE0 /* AppDelegate.swift in Sources */,
 				DE326C471CA47AA400D149D2 /* MapViewController.swift in Sources */,
+				DE9DFDE61CD40CCC0072445C /* Constants .swift in Sources */,
 				DE326C491CA47AB900D149D2 /* TableViewViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
