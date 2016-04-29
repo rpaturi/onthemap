@@ -12,6 +12,9 @@ import UIKit
 class StudentInformation {
     // MARK: Properties
     var studentInfo: [Student]?
+    var firstName: String?
+    var lastName: String?
+    
     // shared session
     var session = NSURLSession.sharedSession()
     
@@ -26,9 +29,15 @@ class StudentInformation {
     
     }
     
-    //MARK: Task for GET 
+    //MARK: Task for GET
+    
     
     //MARK: Task for POST
+    
+    
+    //MARK: Substitute value for key 
+    
+    
     
     //MARK: Shared Instance
     

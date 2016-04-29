@@ -106,7 +106,7 @@ class LoginViewController: UIViewController {
                 print("We could not find \(parsedResult["key"]) in \(account)")
                 return
             }
-
+            
             self.appDelegate.studentInfo.userID = userKey
 
             dispatch_async(dispatch_get_main_queue()) {
