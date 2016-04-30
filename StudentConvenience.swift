@@ -6,6 +6,14 @@
 //  Copyright © 2016 Rachel Paturi. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
+extension StudentInformation {
+    
+    
+    func loginToUdacity() {
+    
+    }
+}
 
