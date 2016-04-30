@@ -43,84 +43,19 @@ class LoginViewController: UIViewController {
             loginErrorLabel.text = "Please enter in your username and password"
         } else {
             loginErrorLabel.text = "Verifying..."
-            loginToUdacity()
+            appDelegate.studentInfo.loginToUdacity(usernameTextField.text!, password: passwordTextField.text!, completionHandlerForLogin: { () in
+                
+                print(self.appDelegate.studentInfo.userID)
+                
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.loginErrorLabel.text = ""
+                    
+                    //Once logged in, show the map view in the tab bar controller
+                    let controller = self.storyboard!.instantiateViewControllerWithIdentifier("MapTabBarController") as! UITabBarController
+                    self.presentViewController(controller, animated: false, completion: nil)
+                }
+            })
         }
-    }
-    
-    func loginToUdacity() {
-        /* 1. Set the parameters */
-        
-        /* 2 Build the URL*/
-        let request = NSMutableURLRequest(URL: NSURL(string: "https://www.udacity.com/api/session")!)
-        request.HTTPMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.HTTPBody = "{\"udacity\": {\"username\": \"\(usernameTextField.text!)\", \"password\": \"\(passwordTextField.text!)\"}}".dataUsingEncoding(NSUTF8StringEncoding)
-        
-        /* 3. Configure the request */
-        let session = NSURLSession.sharedSession()
-        
-        /* 4. Make the request */
-        let task = session.dataTaskWithRequest(request) { data, response, error in
-            /* GUARD: Was there an error? */
-            guard (error == nil) else {
-                print("There was an error with your request: \(error)")
-                return
-            }
-            
-            /* GUARD: Did we get a successful 2XX response? */
-            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
-                print("Your request returned a status code other than 2xx!. This is your status code: \(response)")
-                return
-            }
-            
-            /* GUARD: Was there any data returned? */
-            guard let data = data else {
-                print("No data was returned by the request!")
-                return
-            }
-
-            /* Remove the first 5 characters from data per Udacity API Requirements */
-            let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5)) /* subset response data! */
-            
-            //print(NSString(data: newData, encoding: NSUTF8StringEncoding))
-            
-            /* 5. Parse the data */
-            let parsedResult: AnyObject!
-            do {
-                parsedResult = try NSJSONSerialization.JSONObjectWithData(newData, options: .AllowFragments)
-            } catch {
-                print("Could not parse the data as JSON: '\(newData)'")
-                return
-            }
-            
-            /* 6. Use the data */
-            
-            guard let account = parsedResult["account"] as? [String : AnyObject] else {
-                print("We could not find \(parsedResult["account"])")
-                return
-            }
-            
-            
-            guard let userKey = account["key"] as? String else {
-                print("We could not find \(parsedResult["key"]) in \(account)")
-                return
-            }
-            
-            self.appDelegate.studentInfo.userID = userKey
-
-            dispatch_async(dispatch_get_main_queue()) {
-                self.loginErrorLabel.text = ""
-                //Once logged in, show the map view in the tab bar controller
-                let controller = self.storyboard!.instantiateViewControllerWithIdentifier("MapTabBarController") as! UITabBarController
-                self.presentViewController(controller, animated: false, completion: nil)
-            }
-
-        }
-        
-        /* Resume Task */
-        task.resume()
-        
     }
 
 }
