@@ -32,6 +32,7 @@ extension StudentInformation {
         
         struct ParseMethods {
             static let studentLocation = "/StudentLocation"
+            static let studentRecordLimit = "?100?order=-updatedAt"
         }
 
     }

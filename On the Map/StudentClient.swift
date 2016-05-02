@@ -29,11 +29,96 @@ class StudentInformation {
     
     }
     
-    //MARK: Task for GET
+    //Create URL from parameters
     
+    func urlFromParameters(scheme: String, host: String, path: String, parameters: [String:AnyObject], withPathExtension: String? = nil) -> NSURL {
+        
+        let components = NSURLComponents()
+        components.scheme = scheme
+        components.host = host
+        components.path = path + (withPathExtension ?? "")
+        components.queryItems = [NSURLQueryItem]()
+        
+        for (key, value) in parameters {
+            let queryItem = NSURLQueryItem(name: key, value: "\(value)")
+            components.queryItems!.append(queryItem)
+        }
+        
+        return components.URL!
+        
+    }
+
+    
+    //MARK: Task for GET
+    func taskForGETMethod(method: String, parameters: [String:AnyObject], apiScheme: String, apiHost: String, apiPath: String, completionHandlerForGET: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
+        /* 1. Set the parameters */
+        
+        /* 2 Build the URL*/
+        let request = NSMutableURLRequest(URL: urlFromParameters(apiScheme, host: apiHost, path: apiPath, parameters: parameters, withPathExtension: method))
+        
+        if apiHost == "api.parse.com" {
+            request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
+            request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
+        }
+        
+        /* 3. Configure the request */
+        let session = NSURLSession.sharedSession()
+        
+        /* 4. Make the request */
+        let task = session.dataTaskWithRequest(request) { data, response, error in
+            /* GUARD: Was there an error? */
+            guard (error == nil) else {
+                print("There was an error with your request: \(error)")
+                return
+            }
+            
+            /* GUARD: Did we get a successful 2XX response? */
+            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+                print("Your request returned a status code other than 2xx!. This is your status code: \(response)")
+                return
+            }
+            
+            /* GUARD: Was there any data returned? */
+            guard let data = data else {
+                print("No data was returned by the request!")
+                return
+            }
+            
+            let parsedResult: AnyObject!
+            
+            if apiHost == "www.udacity.com" {
+                /* Remove the first 5 characters from data per Udacity API Requirements */
+                let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5)) /* subset response data! */
+                
+                /* 5. Parse the data */
+                
+                do {
+                    parsedResult = try NSJSONSerialization.JSONObjectWithData(newData, options: .AllowFragments)
+                } catch {
+                    print("Could not parse the data as JSON: '\(newData)'")
+                    return
+                }
+            } else {
+                /* 5. Parse the data */
+                do {
+                    parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
+                } catch {
+                    print("Could not parse the data as JSON: '\(data)'")
+                    return
+                }
+            }
+
+            /* 6. Use the data */
+            completionHandlerForGET(result: parsedResult, error: error)
+            
+        }
+        /* Resume Task */
+        task.resume()
+        return task
+    }
     
     //MARK: Task for POST
-    func taskForPOSTMethod(method: String, var parameters: [String:AnyObject], jsonBody: String, apiScheme: String, apiHost: String, apiPath: String, completionHandlerForPOST: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
+    func taskForPOSTMethod(method: String, parameters: [String:AnyObject], jsonBody: String, apiScheme: String, apiHost: String, apiPath: String, completionHandlerForPOST: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         /* 1. Set the parameters */
         
         /* 2 Build the URL*/
@@ -95,25 +180,6 @@ class StudentInformation {
     
     }
     
-    //Create URL from parameters 
-    
-    private func urlFromParameters(scheme: String, host: String, path: String, parameters: [String:AnyObject], withPathExtension: String? = nil) -> NSURL {
-        
-        let components = NSURLComponents()
-        components.scheme = scheme
-        components.host = host
-        components.path = path + (withPathExtension ?? "")
-        components.queryItems = [NSURLQueryItem]()
-        
-        for (key, value) in parameters {
-            let queryItem = NSURLQueryItem(name: key, value: "\(value)")
-            components.queryItems!.append(queryItem)
-        }
-        
-        return components.URL!
-    
-    }
-
     //MARK: Shared Instance
     
     class func sharedInstance() -> StudentInformation {
