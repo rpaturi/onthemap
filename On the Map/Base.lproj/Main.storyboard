@@ -20,51 +20,63 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N3P-2j-HE3">
-                                <rect key="frame" x="187" y="536" width="226" height="44"/>
+                                <rect key="frame" x="187" y="539" width="226" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="NFw-si-TAV"/>
                                     <constraint firstAttribute="width" constant="226" id="y0I-u0-YGw"/>
                                 </constraints>
-                                <state key="normal" title="Find on the Map"/>
+                                <state key="normal" title="Find on the Map">
+                                    <color key="titleColor" red="0.011764705882352941" green="0.70196078431372544" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="findLocation:" destination="02N-60-HKm" eventType="touchUpInside" id="NH1-Fp-A8Y"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="utD-cE-enm">
+                                <rect key="frame" x="532" y="28" width="48" height="30"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelPost:" destination="02N-60-HKm" eventType="touchUpInside" id="GWL-8g-pNv"/>
+                                </connections>
                             </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="aWS-9E-hOd">
                                 <rect key="frame" x="0.0" y="126" width="609" height="396"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="396" id="YK5-v3-0Ky"/>
-                                </constraints>
                             </mapView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter in your location" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JEY-X7-KpA">
                                 <rect key="frame" x="0.0" y="144" width="600" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="utD-cE-enm">
-                                <rect key="frame" x="532" y="28" width="48" height="30"/>
-                                <state key="normal" title="Cancel"/>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where are you studying today? " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uWc-wS-zfb">
-                                <rect key="frame" x="179" y="75" width="242" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where are you studying today? " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uWc-wS-zfb">
+                                <rect key="frame" x="0.0" y="75" width="600" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.011764705882352941" green="0.70196078431372544" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="N3P-2j-HE3" firstAttribute="centerX" secondItem="JEY-X7-KpA" secondAttribute="centerX" id="8Wi-YE-RyF"/>
                             <constraint firstItem="utD-cE-enm" firstAttribute="trailing" secondItem="Xc1-P5-Qqe" secondAttribute="trailingMargin" id="9EK-IF-Sx0"/>
                             <constraint firstAttribute="trailing" secondItem="JEY-X7-KpA" secondAttribute="trailing" id="HSX-yb-qWH"/>
-                            <constraint firstItem="JEY-X7-KpA" firstAttribute="top" secondItem="uWc-wS-zfb" secondAttribute="bottom" constant="48" id="PPg-de-nSG"/>
+                            <constraint firstAttribute="trailing" secondItem="uWc-wS-zfb" secondAttribute="trailing" id="N22-AU-OQ3"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aWS-9E-hOd" secondAttribute="trailing" constant="-29" id="RjK-ub-XjB"/>
                             <constraint firstItem="aWS-9E-hOd" firstAttribute="leading" secondItem="Xc1-P5-Qqe" secondAttribute="leading" id="SbV-sy-Hdi"/>
-                            <constraint firstItem="JEY-X7-KpA" firstAttribute="centerX" secondItem="uWc-wS-zfb" secondAttribute="centerX" id="Ubc-eI-KBo"/>
-                            <constraint firstItem="N3P-2j-HE3" firstAttribute="top" secondItem="aWS-9E-hOd" secondAttribute="bottom" constant="14" id="VNB-IL-6OB"/>
                             <constraint firstItem="utD-cE-enm" firstAttribute="top" secondItem="D0X-c5-T0Z" secondAttribute="bottom" constant="8" symbolic="YES" id="VcI-0R-yjY"/>
-                            <constraint firstItem="aWS-9E-hOd" firstAttribute="top" secondItem="Xc1-P5-Qqe" secondAttribute="top" constant="126" id="YQW-IE-aQf"/>
-                            <constraint firstItem="aWS-9E-hOd" firstAttribute="top" secondItem="uWc-wS-zfb" secondAttribute="bottom" constant="30" id="hzB-kF-KL0"/>
-                            <constraint firstAttribute="bottom" secondItem="N3P-2j-HE3" secondAttribute="bottom" constant="20" symbolic="YES" id="nVH-IV-r10"/>
+                            <constraint firstItem="Md8-FX-lzg" firstAttribute="top" secondItem="N3P-2j-HE3" secondAttribute="bottom" constant="17" id="afB-ka-0Lb"/>
+                            <constraint firstItem="aWS-9E-hOd" firstAttribute="top" secondItem="JEY-X7-KpA" secondAttribute="bottom" constant="-48" id="gaD-lC-Ay9"/>
+                            <constraint firstItem="uWc-wS-zfb" firstAttribute="leading" secondItem="Xc1-P5-Qqe" secondAttribute="leading" id="jWT-UN-0t6"/>
+                            <constraint firstItem="aWS-9E-hOd" firstAttribute="top" secondItem="uWc-wS-zfb" secondAttribute="bottom" constant="30" id="kIP-z6-L7k"/>
+                            <constraint firstItem="uWc-wS-zfb" firstAttribute="top" secondItem="D0X-c5-T0Z" secondAttribute="bottom" constant="55" id="ked-Cu-CXp"/>
+                            <constraint firstItem="N3P-2j-HE3" firstAttribute="top" secondItem="aWS-9E-hOd" secondAttribute="bottom" constant="17" id="nNh-ru-sUC"/>
                             <constraint firstItem="JEY-X7-KpA" firstAttribute="leading" secondItem="aWS-9E-hOd" secondAttribute="leading" id="w01-Hj-nDG"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="enterLocation" destination="JEY-X7-KpA" id="SqS-yV-ejC"/>
+                        <outlet property="mapView" destination="aWS-9E-hOd" id="w09-Ws-ZG5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gbG-Ex-t3w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -97,14 +109,14 @@
                                                     <rect key="frame" x="15" y="14" width="31.5" height="19.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ePc-Nr-Sot">
                                                     <rect key="frame" x="15" y="33.5" width="40.5" height="13.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -197,7 +209,7 @@
         <!--Login View Controller-->
         <scene sceneID="5Dp-Jf-SjL">
             <objects>
-                <viewController id="aa3-Bp-asO" customClass="LoginViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginViewController" id="aa3-Bp-asO" customClass="LoginViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fnz-EB-uYC"/>
                         <viewControllerLayoutGuide type="bottom" id="Aoj-8K-IGn"/>

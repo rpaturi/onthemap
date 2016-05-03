@@ -7,15 +7,33 @@
 //
 
 import UIKit
+import CoreLocation
+import MapKit
 
 class InformationPostingViewController: UIViewController {
 
+    
+    @IBOutlet weak var enterLocation: UITextField!
+    @IBOutlet weak var mapView: MKMapView!
+    
+    override func viewWillAppear(animated: Bool) {
+    
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
 
+    @IBAction func cancelPost(sender: AnyObject) {
+        
+        dismissViewControllerAnimated(true, completion: nil)
+        
+    }
+
+    @IBAction func findLocation(sender: AnyObject) {
+        
+    }
     
 
 }
