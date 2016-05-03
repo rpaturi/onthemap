@@ -127,7 +127,11 @@
                     <navigationItem key="navigationItem" title="On the Map" id="b4u-zK-k4j">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="gGK-bs-9vK"/>
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="refresh" id="rMZ-Yq-dQA"/>
+                            <barButtonItem systemItem="refresh" id="rMZ-Yq-dQA">
+                                <connections>
+                                    <action selector="refreshData:" destination="WSf-Tl-kS6" id="VhW-Dh-aPo"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem image="Pin icon-Small" id="yUd-E8-hrc">
                                 <connections>
                                     <segue destination="02N-60-HKm" kind="presentation" id="MBo-I7-iM2"/>
@@ -135,6 +139,9 @@
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="studentTableView" destination="cUN-Kj-it5" id="Gwr-I4-f1F"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mw2-IN-mHJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -167,7 +174,11 @@
                     <navigationItem key="navigationItem" title="On the Map" id="b7p-J4-O5t">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="4jc-Qj-l6H"/>
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="refresh" id="0eO-4e-m87"/>
+                            <barButtonItem systemItem="refresh" id="0eO-4e-m87">
+                                <connections>
+                                    <action selector="refreshData:" destination="5Im-vb-vvd" id="peJ-lj-VrI"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem image="Pin icon-Small" id="U1C-cu-Hu5">
                                 <connections>
                                     <segue destination="02N-60-HKm" kind="presentation" id="M44-lc-J2b"/>
@@ -372,6 +383,6 @@
         <image name="list icon-Small" width="29" height="29"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="M44-lc-J2b"/>
+        <segue reference="MBo-I7-iM2"/>
     </inferredMetricsTieBreakers>
 </document>

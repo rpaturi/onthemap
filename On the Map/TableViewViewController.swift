@@ -14,6 +14,7 @@ class TableViewViewController: UIViewController, UITableViewDataSource{
     var studentCount: Int!
     var studentData: [Student]!
     
+    @IBOutlet weak var studentTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +45,24 @@ class TableViewViewController: UIViewController, UITableViewDataSource{
         cell.detailTextLabel?.text = "\(student.mediaURL)"
         return cell
     }
+    
+    @IBAction func refreshData(sender: AnyObject) {
+        
+        //Get student location data from Parse server
+        appDelegate.studentInfo.getStudentLocation { (result, error) in
+            guard let results = result["results"] as? [[String:AnyObject]] else {
+                print("We could not find \(result["results"])")
+                return
+            }
+            
+            self.appDelegate.studentInfo.studentInfo = Student.studentsFromResults(results)
+            
+            self.studentTableView.reloadData()
+            
+            print("I am refreshing")
+        }
+    }
+    
 
 
 }

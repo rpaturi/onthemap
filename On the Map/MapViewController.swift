@@ -34,6 +34,25 @@ class MapViewController: UIViewController {
         //Store student's first and last name
         appDelegate.studentInfo.getStudentInformation { }
         
+        getStudentLocation()
+    }
+
+    @IBAction func refreshData(sender: AnyObject) {
+        getStudentLocation()
+    }
+    
+    func createMapAnnotation(students : [Student]) {
+        for student in students {
+            let annotation = MKPointAnnotation()
+            annotation.title = "\(student.firstName) \(student.lastName)"
+            annotation.subtitle = "\(student.mediaURL)"
+            annotation.coordinate = CLLocationCoordinate2D(latitude: student.latitude, longitude: student.longitude)
+            mapView.addAnnotation(annotation)
+        }
+    }
+    
+    func getStudentLocation() {
+
         //Get student location data from Parse server and create map annotations
         appDelegate.studentInfo.getStudentLocation { (result, error) in
             guard let results = result["results"] as? [[String:AnyObject]] else {
@@ -45,18 +64,6 @@ class MapViewController: UIViewController {
             if let studentInfo = self.appDelegate.studentInfo.studentInfo {
                 self.createMapAnnotation(studentInfo)
             }
-        }
-        
-    }
-
-    
-    func createMapAnnotation(students : [Student]) {
-        for student in students {
-            let annotation = MKPointAnnotation()
-            annotation.title = "\(student.firstName) \(student.lastName)"
-            annotation.subtitle = "\(student.mediaURL)"
-            annotation.coordinate = CLLocationCoordinate2D(latitude: student.latitude, longitude: student.longitude)
-            mapView.addAnnotation(annotation)
         }
     }
     
