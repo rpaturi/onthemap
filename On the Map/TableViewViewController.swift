@@ -25,6 +25,8 @@ class TableViewViewController: UIViewController, UITableViewDataSource{
     }
     
     override func viewWillAppear(animated: Bool) {
+        
+        
         if let student = self.appDelegate.studentInfo.studentInfo {
             studentData = student
             studentCount = student.count
@@ -58,7 +60,12 @@ class TableViewViewController: UIViewController, UITableViewDataSource{
             self.appDelegate.studentInfo.studentInfo = Student.studentsFromResults(results)
             if let studentInfo = self.appDelegate.studentInfo.studentInfo {
                 print(studentInfo)
-                self.studentTableView.reloadData()
+                
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.studentTableView.reloadData()
+                    return
+                }
+                
             }
         }
     }

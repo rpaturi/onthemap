@@ -89,7 +89,7 @@ extension StudentInformation {
         
         let methodString = "\(Method.ParseMethods.studentLocation)"
         
-        let jsonBody: String = "{\"uniqueKey\": \"\(userIDNumber)\", \"firstName\": \"\(theFirstName)\", \"lastName\": \"\(theLastName)\",\"mapString\": \"\(mapString)\", \"mediaURL\": \"\(mediaURL)\",\"latitude\": \(coordinates.latitude), \"longitude\": \(coordinates.longitude)}"
+        let jsonBody: String = "{\"uniqueKey\": \"\(userIDNumber)\", \"firstName\": \"John\", \"lastName\": \"Doe\",\"mapString\": \"\(mapString)\", \"mediaURL\": \"\(mediaURL)\",\"latitude\": \(coordinates.latitude), \"longitude\": \(coordinates.longitude)}"
         
         taskForPOSTMethod(methodString, parameters: [:], jsonBody: jsonBody, apiScheme: Constants.ParseURL.ApiScheme, apiHost: Constants.ParseURL.ApiHost, apiPath: Constants.ParseURL.ApiPath, completionHandlerForPOST: {(result, error) in
             
