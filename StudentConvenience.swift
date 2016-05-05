@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreLocation
 
 extension StudentInformation {
     //MARK: GET functions
@@ -72,6 +73,27 @@ extension StudentInformation {
             
             completionHandlerForLogin()
             
+        })
+    }
+    
+    func postLocationToParse(mapString: String, mediaURL: String, coordinates: CLLocationCoordinate2D, completionHandlerForPostLocation: (()) -> Void ) {
+        guard let userIDNumber = self.userID else {
+            print("Optional values of \(self.userID) was not unwrapped properly")
+            return
+        }
+        
+        guard let theFirstName = self.firstName, let theLastName = self.lastName else {
+            print("Optional values of \(self.firstName) and \(self.lastName) was not unwrapped properly")
+            return
+        }
+        
+        let methodString = "\(Method.ParseMethods.studentLocation)"
+        
+        let jsonBody: String = "{\"uniqueKey\": \"\(userIDNumber)\", \"firstName\": \"\(theFirstName)\", \"lastName\": \"\(theLastName)\",\"mapString\": \"\(mapString)\", \"mediaURL\": \"\(mediaURL)\",\"latitude\": \(coordinates.latitude), \"longitude\": \(coordinates.longitude)}"
+        
+        taskForPOSTMethod(methodString, parameters: [:], jsonBody: jsonBody, apiScheme: Constants.ParseURL.ApiScheme, apiHost: Constants.ParseURL.ApiHost, apiPath: Constants.ParseURL.ApiPath, completionHandlerForPOST: {(result, error) in
+            
+            completionHandlerForPostLocation()
         })
     }
 }

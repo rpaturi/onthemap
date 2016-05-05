@@ -124,7 +124,10 @@ class StudentInformation {
         /* 2 Build the URL*/
         let request = NSMutableURLRequest(URL: urlFromParameters(apiScheme, host: apiHost, path: apiPath, parameters: parameters, withPathExtension: method))
         request.HTTPMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        if apiHost == "www.udacity.com" {
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+        }
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         if apiHost == "api.parse.com" {
             request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
@@ -155,18 +158,29 @@ class StudentInformation {
                 return
             }
             
-            /* Remove the first 5 characters from data per Udacity API Requirements */
-            let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5)) /* subset response data! */
-            
-            //print(NSString(data: newData, encoding: NSUTF8StringEncoding))
-            
             /* 5. Parse the data */
             let parsedResult: AnyObject!
-            do {
-                parsedResult = try NSJSONSerialization.JSONObjectWithData(newData, options: .AllowFragments)
-            } catch {
-                print("Could not parse the data as JSON: '\(newData)'")
-                return
+            
+            if apiHost == "www.udacity.com" {
+                /* Remove the first 5 characters from data per Udacity API Requirements */
+                let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5)) /* subset response data! */
+                
+                /* 5. Parse the data */
+                
+                do {
+                    parsedResult = try NSJSONSerialization.JSONObjectWithData(newData, options: .AllowFragments)
+                } catch {
+                    print("Could not parse the data as JSON: '\(newData)'")
+                    return
+                }
+            } else {
+                /* 5. Parse the data */
+                do {
+                    parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
+                } catch {
+                    print("Could not parse the data as JSON: '\(data)'")
+                    return
+                }
             }
             
             completionHandlerForPOST(result: parsedResult, error: error)

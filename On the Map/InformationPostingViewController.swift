@@ -70,7 +70,7 @@ class InformationPostingViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "postLocation" {
             if let addURLVC = segue.destinationViewController as? AddURLViewController {
-                
+                addURLVC.mapString = enterLocation.text
                 addURLVC.location = location
                 print("I am sending the location: \(addURLVC.location) I think")
                 

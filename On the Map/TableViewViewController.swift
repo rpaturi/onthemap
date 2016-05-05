@@ -56,10 +56,10 @@ class TableViewViewController: UIViewController, UITableViewDataSource{
             }
             
             self.appDelegate.studentInfo.studentInfo = Student.studentsFromResults(results)
-            
-            self.studentTableView.reloadData()
-            
-            print("I am refreshing")
+            if let studentInfo = self.appDelegate.studentInfo.studentInfo {
+                print(studentInfo)
+                self.studentTableView.reloadData()
+            }
         }
     }
     

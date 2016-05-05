@@ -13,7 +13,9 @@ import MapKit
 
 class AddURLViewController: UIViewController {
     
+    var appDelegate: AppDelegate!
     var location: CLLocationCoordinate2D?
+    var mapString: String?
     
     @IBOutlet weak var enterURL: UITextField!
     @IBOutlet weak var mapView: MKMapView!
@@ -27,6 +29,7 @@ class AddURLViewController: UIViewController {
             let annotation = MKPointAnnotation()
             annotation.coordinate = theLocation
             self.mapView.addAnnotation(annotation)
+            self.mapView.centerCoordinate = theLocation
         }
         
     }
@@ -34,17 +37,27 @@ class AddURLViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        if let theLocation = location {
-//            self.mapView.centerCoordinate = theLocation
-//            
-//            let annotation = MKPointAnnotation()
-//            annotation.coordinate = theLocation
-//            self.mapView.addAnnotation(annotation)
-//        }
+        // get the app delegate
+        appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     }
     
     @IBAction func cancelPost(sender: AnyObject) {
         enterURL.text = nil
         dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    @IBAction func submitLocation(sender: AnyObject) {
+        
+        if let theMapString = mapString, let theLocation = location, let urlText = enterURL.text {
+            
+            appDelegate.studentInfo.postLocationToParse(theMapString, mediaURL: urlText, coordinates: theLocation, completionHandlerForPostLocation: { () in
+                        
+                    })
+        }
+        
+        dismissViewControllerAnimated(true, completion: nil)
+
+    }
+    
+    
 }
