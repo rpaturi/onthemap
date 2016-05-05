@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="aa3-Bp-asO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="aa3-Bp-asO">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -7,7 +7,7 @@
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
-        <!--Information Posting View Controller-->
+        <!--Find Location-->
         <scene sceneID="WR9-Or-jTE">
             <objects>
                 <viewController id="02N-60-HKm" customClass="InformationPostingViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
@@ -31,23 +31,17 @@
                                 </state>
                                 <connections>
                                     <action selector="findLocation:" destination="02N-60-HKm" eventType="touchUpInside" id="NH1-Fp-A8Y"/>
-                                    <segue destination="9lx-68-eBh" kind="show" id="UUr-qI-Zf7"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="utD-cE-enm">
-                                <rect key="frame" x="532" y="28" width="48" height="30"/>
-                                <state key="normal" title="Cancel">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="cancelPost:" destination="02N-60-HKm" eventType="touchUpInside" id="GWL-8g-pNv"/>
                                 </connections>
                             </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="aWS-9E-hOd">
                                 <rect key="frame" x="0.0" y="126" width="609" height="396"/>
                             </mapView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter in your location" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JEY-X7-KpA">
-                                <rect key="frame" x="0.0" y="144" width="600" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter in your location" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JEY-X7-KpA">
+                                <rect key="frame" x="0.0" y="144" width="600" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="i15-gJ-1oU"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -60,30 +54,36 @@
                         </subviews>
                         <color key="backgroundColor" red="0.011764705882352941" green="0.70196078431372544" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="N3P-2j-HE3" firstAttribute="centerX" secondItem="JEY-X7-KpA" secondAttribute="centerX" id="8Wi-YE-RyF"/>
-                            <constraint firstItem="utD-cE-enm" firstAttribute="trailing" secondItem="Xc1-P5-Qqe" secondAttribute="trailingMargin" id="9EK-IF-Sx0"/>
-                            <constraint firstAttribute="trailing" secondItem="JEY-X7-KpA" secondAttribute="trailing" id="HSX-yb-qWH"/>
+                            <constraint firstItem="JEY-X7-KpA" firstAttribute="trailing" secondItem="uWc-wS-zfb" secondAttribute="trailing" id="3Qm-C6-Sdg"/>
+                            <constraint firstItem="JEY-X7-KpA" firstAttribute="centerX" secondItem="N3P-2j-HE3" secondAttribute="centerX" id="Frn-12-GEJ"/>
+                            <constraint firstItem="JEY-X7-KpA" firstAttribute="leading" secondItem="uWc-wS-zfb" secondAttribute="leading" id="JqL-tU-Yit"/>
                             <constraint firstAttribute="trailing" secondItem="uWc-wS-zfb" secondAttribute="trailing" id="N22-AU-OQ3"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aWS-9E-hOd" secondAttribute="trailing" constant="-29" id="RjK-ub-XjB"/>
                             <constraint firstItem="aWS-9E-hOd" firstAttribute="leading" secondItem="Xc1-P5-Qqe" secondAttribute="leading" id="SbV-sy-Hdi"/>
-                            <constraint firstItem="utD-cE-enm" firstAttribute="top" secondItem="D0X-c5-T0Z" secondAttribute="bottom" constant="8" symbolic="YES" id="VcI-0R-yjY"/>
                             <constraint firstItem="Md8-FX-lzg" firstAttribute="top" secondItem="N3P-2j-HE3" secondAttribute="bottom" constant="17" id="afB-ka-0Lb"/>
-                            <constraint firstItem="aWS-9E-hOd" firstAttribute="top" secondItem="JEY-X7-KpA" secondAttribute="bottom" constant="-48" id="gaD-lC-Ay9"/>
+                            <constraint firstItem="JEY-X7-KpA" firstAttribute="top" secondItem="uWc-wS-zfb" secondAttribute="bottom" constant="48" id="fSy-gA-gkW"/>
                             <constraint firstItem="uWc-wS-zfb" firstAttribute="leading" secondItem="Xc1-P5-Qqe" secondAttribute="leading" id="jWT-UN-0t6"/>
                             <constraint firstItem="aWS-9E-hOd" firstAttribute="top" secondItem="uWc-wS-zfb" secondAttribute="bottom" constant="30" id="kIP-z6-L7k"/>
-                            <constraint firstItem="uWc-wS-zfb" firstAttribute="top" secondItem="D0X-c5-T0Z" secondAttribute="bottom" constant="55" id="ked-Cu-CXp"/>
+                            <constraint firstItem="uWc-wS-zfb" firstAttribute="top" secondItem="D0X-c5-T0Z" secondAttribute="bottom" constant="11" id="ked-Cu-CXp"/>
                             <constraint firstItem="N3P-2j-HE3" firstAttribute="top" secondItem="aWS-9E-hOd" secondAttribute="bottom" constant="17" id="nNh-ru-sUC"/>
-                            <constraint firstItem="JEY-X7-KpA" firstAttribute="leading" secondItem="aWS-9E-hOd" secondAttribute="leading" id="w01-Hj-nDG"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Find Location" id="a4d-jO-WJT">
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="qpx-Ld-mHC">
+                            <connections>
+                                <action selector="cancelPost:" destination="02N-60-HKm" id="t0w-Jk-zdP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="enterLocation" destination="JEY-X7-KpA" id="SqS-yV-ejC"/>
                         <outlet property="mapView" destination="aWS-9E-hOd" id="w09-Ws-ZG5"/>
+                        <segue destination="9lx-68-eBh" kind="show" identifier="postLocation" id="gjN-CK-M9a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gbG-Ex-t3w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2591" y="-461"/>
+            <point key="canvasLocation" x="3403" y="-461"/>
         </scene>
         <!--On the Map-->
         <scene sceneID="LEs-sX-0hi">
@@ -149,7 +149,7 @@
                             </barButtonItem>
                             <barButtonItem image="Pin icon-Small" id="yUd-E8-hrc">
                                 <connections>
-                                    <segue destination="02N-60-HKm" kind="presentation" id="MBo-I7-iM2"/>
+                                    <segue destination="9aS-xu-lrn" kind="presentation" id="MBo-I7-iM2"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -196,7 +196,7 @@
                             </barButtonItem>
                             <barButtonItem image="Pin icon-Small" id="U1C-cu-Hu5">
                                 <connections>
-                                    <segue destination="02N-60-HKm" kind="presentation" id="M44-lc-J2b"/>
+                                    <segue destination="9aS-xu-lrn" kind="presentation" id="M44-lc-J2b"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -390,10 +390,10 @@
             </objects>
             <point key="canvasLocation" x="1017" y="-131"/>
         </scene>
-        <!--Information Posting View Controller-->
+        <!--Add URL View Controller-->
         <scene sceneID="kkF-oj-qvc">
             <objects>
-                <viewController id="9lx-68-eBh" customClass="InformationPostingViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="addVC" id="9lx-68-eBh" customClass="AddURLViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1GY-VB-AX8"/>
                         <viewControllerLayoutGuide type="bottom" id="cBZ-3b-If8"/>
@@ -416,20 +416,15 @@
                                     <action selector="findLocation:" destination="9lx-68-eBh" eventType="touchUpInside" id="e2B-Yt-IVH"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nFo-aR-5Oq">
-                                <rect key="frame" x="532" y="28" width="48" height="30"/>
-                                <state key="normal" title="Cancel">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="cancelPost:" destination="9lx-68-eBh" eventType="touchUpInside" id="K3T-yd-9u2"/>
-                                </connections>
-                            </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gmT-ab-qcI">
                                 <rect key="frame" x="0.0" y="126" width="609" height="396"/>
                             </mapView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter in you URL" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RjZ-wa-DW1">
-                                <rect key="frame" x="0.0" y="144" width="600" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter in you URL" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RjZ-wa-DW1">
+                                <rect key="frame" x="0.0" y="144" width="600" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="IJe-YY-KBp"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -442,30 +437,55 @@
                         </subviews>
                         <color key="backgroundColor" red="0.01176470588" green="0.70196078429999997" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="RjZ-wa-DW1" secondAttribute="trailing" id="7ng-N2-Amb"/>
+                            <constraint firstItem="RjZ-wa-DW1" firstAttribute="top" secondItem="P31-7b-MZp" secondAttribute="bottom" constant="48" id="0CU-Zw-oXa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gmT-ab-qcI" secondAttribute="trailing" constant="-29" id="7qW-t7-XVR"/>
                             <constraint firstItem="gmT-ab-qcI" firstAttribute="top" secondItem="P31-7b-MZp" secondAttribute="bottom" constant="30" id="ESF-S0-P8D"/>
                             <constraint firstItem="Qu7-tn-xxm" firstAttribute="top" secondItem="gmT-ab-qcI" secondAttribute="bottom" constant="17" id="K6p-xg-u6X"/>
-                            <constraint firstItem="nFo-aR-5Oq" firstAttribute="trailing" secondItem="BRz-L3-oB6" secondAttribute="trailingMargin" id="LLU-qU-cit"/>
-                            <constraint firstItem="Qu7-tn-xxm" firstAttribute="centerX" secondItem="RjZ-wa-DW1" secondAttribute="centerX" id="QhZ-aH-xn2"/>
                             <constraint firstItem="P31-7b-MZp" firstAttribute="leading" secondItem="BRz-L3-oB6" secondAttribute="leading" id="ZeT-rZ-U7d"/>
+                            <constraint firstItem="RjZ-wa-DW1" firstAttribute="leading" secondItem="P31-7b-MZp" secondAttribute="leading" id="aIv-aL-LqD"/>
                             <constraint firstItem="cBZ-3b-If8" firstAttribute="top" secondItem="Qu7-tn-xxm" secondAttribute="bottom" constant="17" id="aeB-IL-8lC"/>
-                            <constraint firstItem="gmT-ab-qcI" firstAttribute="top" secondItem="RjZ-wa-DW1" secondAttribute="bottom" constant="-48" id="cDn-jK-Vih"/>
-                            <constraint firstItem="P31-7b-MZp" firstAttribute="top" secondItem="1GY-VB-AX8" secondAttribute="bottom" constant="55" id="fzp-wZ-dl5"/>
-                            <constraint firstItem="nFo-aR-5Oq" firstAttribute="top" secondItem="1GY-VB-AX8" secondAttribute="bottom" constant="8" symbolic="YES" id="gPf-R1-ohI"/>
+                            <constraint firstItem="P31-7b-MZp" firstAttribute="top" secondItem="1GY-VB-AX8" secondAttribute="bottom" constant="11" id="fzp-wZ-dl5"/>
                             <constraint firstItem="gmT-ab-qcI" firstAttribute="leading" secondItem="BRz-L3-oB6" secondAttribute="leading" id="hCc-dY-fE2"/>
-                            <constraint firstItem="RjZ-wa-DW1" firstAttribute="leading" secondItem="gmT-ab-qcI" secondAttribute="leading" id="rEt-zF-aWP"/>
+                            <constraint firstItem="RjZ-wa-DW1" firstAttribute="trailing" secondItem="P31-7b-MZp" secondAttribute="trailing" id="jhg-DZ-HR3"/>
+                            <constraint firstItem="RjZ-wa-DW1" firstAttribute="centerX" secondItem="Qu7-tn-xxm" secondAttribute="centerX" id="lNl-Xf-i9q"/>
                             <constraint firstAttribute="trailing" secondItem="P31-7b-MZp" secondAttribute="trailing" id="wed-xD-AUa"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="mPQ-eh-Ur4">
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="SEL-pD-ZBc">
+                            <connections>
+                                <action selector="cancelPost:" destination="9lx-68-eBh" id="3EI-eL-dPd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="enterLocation" destination="RjZ-wa-DW1" id="jK4-kx-Cjy"/>
+                        <outlet property="enterURL" destination="RjZ-wa-DW1" id="3CT-tf-Dba"/>
                         <outlet property="mapView" destination="gmT-ab-qcI" id="bbc-aM-LdV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q4H-5o-iJZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3257" y="-461"/>
+            <point key="canvasLocation" x="4069" y="-461"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="MUN-Hy-EUf">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9aS-xu-lrn" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="e1H-kK-fCq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="02N-60-HKm" kind="relationship" relationship="rootViewController" id="61K-bR-7wo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6VM-cX-aw8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2591" y="-461"/>
         </scene>
     </scenes>
     <resources>

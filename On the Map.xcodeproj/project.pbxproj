@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		DE0A82591CC40FBF001197B6 /* StudentConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0A82581CC40FBF001197B6 /* StudentConvenience.swift */; };
 		DE0A825B1CC4129D001197B6 /* StudentClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0A825A1CC4129D001197B6 /* StudentClient.swift */; };
+		DE252D4F1CDA96DF000C2592 /* AddURLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE252D4E1CDA96DF000C2592 /* AddURLViewController.swift */; };
 		DE326C451CA47A7A00D149D2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE326C441CA47A7A00D149D2 /* LoginViewController.swift */; };
 		DE326C471CA47AA400D149D2 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE326C461CA47AA400D149D2 /* MapViewController.swift */; };
 		DE326C491CA47AB900D149D2 /* TableViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE326C481CA47AB900D149D2 /* TableViewViewController.swift */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		DE0A82581CC40FBF001197B6 /* StudentConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentConvenience.swift; sourceTree = SOURCE_ROOT; };
 		DE0A825A1CC4129D001197B6 /* StudentClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentClient.swift; sourceTree = "<group>"; };
+		DE252D4E1CDA96DF000C2592 /* AddURLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddURLViewController.swift; sourceTree = "<group>"; };
 		DE326C441CA47A7A00D149D2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DE326C461CA47AA400D149D2 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		DE326C481CA47AB900D149D2 /* TableViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				DE326C461CA47AA400D149D2 /* MapViewController.swift */,
 				DE326C4A1CA47AD400D149D2 /* InformationPostingViewController.swift */,
 				DE326C481CA47AB900D149D2 /* TableViewViewController.swift */,
+				DE252D4E1CDA96DF000C2592 /* AddURLViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -172,6 +175,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE252D4F1CDA96DF000C2592 /* AddURLViewController.swift in Sources */,
 				DE326C4B1CA47AD400D149D2 /* InformationPostingViewController.swift in Sources */,
 				DE0A82591CC40FBF001197B6 /* StudentConvenience.swift in Sources */,
 				DEC36CF21CA9CA9C008BF861 /* Student.swift in Sources */,
