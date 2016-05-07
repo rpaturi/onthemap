@@ -55,6 +55,16 @@ class MapViewController: UIViewController {
 
         //Get student location data from Parse server and create map annotations
         appDelegate.studentInfo.getStudentLocation { (result, error) in
+            
+            if let error = error {
+                print(error)
+                let alert = UIAlertController(title: "Data Error", message: "Unfortunately, the data did not load properly. Please try again", preferredStyle: .Alert)
+                let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                alert.addAction(action)
+                self.presentViewController(alert, animated: true, completion: nil)
+                return
+            }
+            
             guard let results = result["results"] as? [[String:AnyObject]] else {
                 print("We could not find \(result["results"])")
                 return

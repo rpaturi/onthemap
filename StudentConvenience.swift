@@ -46,7 +46,11 @@ extension StudentInformation {
         
         taskForGETMethod(methodString, parameters: [:], apiScheme: Constants.ParseURL.ApiScheme, apiHost: Constants.ParseURL.ApiHost, apiPath: Constants.ParseURL.ApiPath, completionHandlerForGET: {(parsedResult, error) in
             
-            completionHandlerForStudentLocation(result: parsedResult, error: error)
+            if let error = error {
+                completionHandlerForStudentLocation(result: nil, error: error) 
+            } else {
+                completionHandlerForStudentLocation(result: parsedResult, error: nil)
+            }
         })
     }
 
