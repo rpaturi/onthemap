@@ -23,13 +23,21 @@ class AddURLViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         
         super.viewWillAppear(animated)
+        
         if let theLocation = location {
             self.mapView.centerCoordinate = theLocation
             
             let annotation = MKPointAnnotation()
             annotation.coordinate = theLocation
             self.mapView.addAnnotation(annotation)
-            self.mapView.centerCoordinate = theLocation
+            
+            let latDegrees = 0.05
+            let longDegrees = 0.05
+            
+            let span: MKCoordinateSpan = MKCoordinateSpanMake(latDegrees, longDegrees)
+            let region: MKCoordinateRegion = MKCoordinateRegionMake(theLocation, span)
+            
+            self.mapView.setRegion(region, animated: true)
         }
         
     }
