@@ -16,14 +16,16 @@ class InformationPostingViewController: UIViewController {
     
     @IBOutlet weak var enterLocation: UITextField!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewWillAppear(animated: Bool) {
-
+        activityIndicator.hidden = true
+        self.view.alpha = 1.0
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
 
     @IBAction func cancelPost(sender: AnyObject) {
@@ -44,6 +46,14 @@ class InformationPostingViewController: UIViewController {
             return
             
         } else {
+            activityIndicator.hidden = false
+            activityIndicator.startAnimating()
+            
+            if activityIndicator.isAnimating() == true {
+                self.view.alpha = 0.5
+            } else {
+                self.view.alpha = 1.0
+            }
             
             if let userLocation = enterLocation.text {
                 let request = MKLocalSearchRequest()

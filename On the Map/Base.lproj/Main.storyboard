@@ -51,6 +51,10 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Fvi-74-GOK">
+                                <rect key="frame" x="282" y="305" width="37" height="37"/>
+                                <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.011764705882352941" green="0.70196078431372544" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -62,6 +66,8 @@
                             <constraint firstItem="aWS-9E-hOd" firstAttribute="leading" secondItem="Xc1-P5-Qqe" secondAttribute="leading" id="SbV-sy-Hdi"/>
                             <constraint firstItem="Md8-FX-lzg" firstAttribute="top" secondItem="N3P-2j-HE3" secondAttribute="bottom" constant="17" id="afB-ka-0Lb"/>
                             <constraint firstItem="JEY-X7-KpA" firstAttribute="top" secondItem="uWc-wS-zfb" secondAttribute="bottom" constant="37" id="fSy-gA-gkW"/>
+                            <constraint firstItem="Fvi-74-GOK" firstAttribute="centerY" secondItem="aWS-9E-hOd" secondAttribute="centerY" id="faf-4l-LId"/>
+                            <constraint firstItem="Fvi-74-GOK" firstAttribute="centerX" secondItem="JEY-X7-KpA" secondAttribute="centerX" id="gyi-Xn-ldF"/>
                             <constraint firstItem="uWc-wS-zfb" firstAttribute="leading" secondItem="Xc1-P5-Qqe" secondAttribute="leading" id="jWT-UN-0t6"/>
                             <constraint firstItem="aWS-9E-hOd" firstAttribute="top" secondItem="uWc-wS-zfb" secondAttribute="bottom" constant="19" id="kIP-z6-L7k"/>
                             <constraint firstItem="uWc-wS-zfb" firstAttribute="top" secondItem="D0X-c5-T0Z" secondAttribute="bottom" constant="22" id="ked-Cu-CXp"/>
@@ -76,6 +82,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="Fvi-74-GOK" id="edP-8F-tlF"/>
                         <outlet property="enterLocation" destination="JEY-X7-KpA" id="SqS-yV-ejC"/>
                         <outlet property="mapView" destination="aWS-9E-hOd" id="w09-Ws-ZG5"/>
                         <segue destination="9lx-68-eBh" kind="show" identifier="postLocation" id="gjN-CK-M9a"/>
