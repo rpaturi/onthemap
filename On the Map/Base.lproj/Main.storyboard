@@ -257,8 +257,8 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rdB-Fv-F05">
-                                <rect key="frame" x="20" y="329" width="560" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rdB-Fv-F05">
+                                <rect key="frame" x="20" y="329" width="560" height="44"/>
                                 <color key="backgroundColor" red="0.0" green="0.58012495471476511" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -267,13 +267,6 @@
                                     <action selector="loginButton:" destination="aa3-Bp-asO" eventType="touchUpInside" id="XvA-Aa-UQ6"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Afi-Wm-fAp">
-                                <rect key="frame" x="20" y="550" width="560" height="30"/>
-                                <color key="backgroundColor" red="0.23137254901960785" green="0.34901960784313724" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Sign in with Facebook">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Udacity-Logo" translatesAutoresizingMaskIntoConstraints="NO" id="w5R-Rg-LOc">
                                 <rect key="frame" x="180" y="53" width="240" height="128"/>
                                 <constraints>
@@ -281,8 +274,8 @@
                                     <constraint firstAttribute="width" constant="240" id="pAU-On-Lht"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mdh-fa-byN">
-                                <rect key="frame" x="191" y="377" width="219" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mdh-fa-byN">
+                                <rect key="frame" x="191" y="381" width="219" height="30"/>
                                 <state key="normal" title="Don’t have an account? Sign Up"/>
                                 <connections>
                                     <action selector="signUpForUdacityAccount:" destination="aa3-Bp-asO" eventType="touchUpInside" id="Fmq-JA-Yxq"/>
@@ -294,6 +287,13 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Afi-Wm-fAp">
+                                <rect key="frame" x="20" y="536" width="560" height="44"/>
+                                <color key="backgroundColor" red="0.23137254901960785" green="0.34901960784313724" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Sign in with Facebook">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -312,13 +312,13 @@
                             <constraint firstAttribute="bottom" secondItem="Afi-Wm-fAp" secondAttribute="bottom" constant="20" symbolic="YES" id="buI-fc-qax"/>
                             <constraint firstItem="tft-ug-Cro" firstAttribute="centerX" secondItem="sUj-SD-mOM" secondAttribute="centerX" id="ch3-9n-HFO"/>
                             <constraint firstItem="w5R-Rg-LOc" firstAttribute="top" secondItem="fnz-EB-uYC" secondAttribute="bottom" constant="33" id="dJc-lq-FS2"/>
-                            <constraint firstItem="UMO-x4-itm" firstAttribute="top" secondItem="mdh-fa-byN" secondAttribute="bottom" constant="18" id="ilI-LW-Obb"/>
+                            <constraint firstItem="UMO-x4-itm" firstAttribute="top" secondItem="mdh-fa-byN" secondAttribute="bottom" constant="14" id="ilI-LW-Obb"/>
                             <constraint firstItem="w5R-Rg-LOc" firstAttribute="centerX" secondItem="mUY-4A-7hP" secondAttribute="centerX" id="jO2-GE-ovh"/>
                             <constraint firstItem="UMO-x4-itm" firstAttribute="leading" secondItem="rdB-Fv-F05" secondAttribute="leading" id="oGc-LI-eF3"/>
                             <constraint firstItem="rdB-Fv-F05" firstAttribute="top" secondItem="Jqo-MX-Gdh" secondAttribute="bottom" constant="14" id="ppt-c9-oC6"/>
                             <constraint firstItem="Afi-Wm-fAp" firstAttribute="leading" secondItem="rdB-Fv-F05" secondAttribute="leading" id="t8F-VI-pte"/>
                             <constraint firstItem="UMO-x4-itm" firstAttribute="trailing" secondItem="rdB-Fv-F05" secondAttribute="trailing" id="x9j-cz-2y0"/>
-                            <constraint firstItem="mdh-fa-byN" firstAttribute="top" secondItem="rdB-Fv-F05" secondAttribute="bottom" constant="18" id="yOV-3I-zlP"/>
+                            <constraint firstItem="mdh-fa-byN" firstAttribute="top" secondItem="rdB-Fv-F05" secondAttribute="bottom" constant="8" id="yOV-3I-zlP"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="QSI-Cc-0xr" appends="YES" id="gai-nl-toH"/>
@@ -502,6 +502,6 @@
         <image name="list icon-Small" width="29" height="29"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="MBo-I7-iM2"/>
+        <segue reference="M44-lc-J2b"/>
     </inferredMetricsTieBreakers>
 </document>
