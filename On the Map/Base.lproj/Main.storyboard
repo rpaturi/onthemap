@@ -135,6 +135,7 @@
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="WSf-Tl-kS6" id="NNo-Ar-kXn"/>
+                                    <outlet property="delegate" destination="WSf-Tl-kS6" id="atz-Jg-rzB"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -502,6 +503,6 @@
         <image name="list icon-Small" width="29" height="29"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="M44-lc-J2b"/>
+        <segue reference="MBo-I7-iM2"/>
     </inferredMetricsTieBreakers>
 </document>

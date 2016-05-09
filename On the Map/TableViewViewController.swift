@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TableViewViewController: UIViewController, UITableViewDataSource{
+class TableViewViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
 
     var appDelegate: AppDelegate!
     var studentCount: Int!
@@ -46,6 +46,13 @@ class TableViewViewController: UIViewController, UITableViewDataSource{
         cell.textLabel?.text = "\(student.firstName) \(student.lastName)"
         cell.detailTextLabel?.text = "\(student.mediaURL)"
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let student = studentData[indexPath.row]
+        
+        UIApplication.sharedApplication().openURL(NSURL(string: student.mediaURL)!)
+        
     }
     
     @IBAction func refreshData(sender: AnyObject) {
