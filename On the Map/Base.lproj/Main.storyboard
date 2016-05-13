@@ -35,6 +35,10 @@
                             </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="aWS-9E-hOd">
                                 <rect key="frame" x="0.0" y="126" width="609" height="396"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="M9m-4k-FvC" appends="YES" id="vhT-lA-3hy"/>
+                                </connections>
                             </mapView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter in your location" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JEY-X7-KpA">
                                 <rect key="frame" x="0.0" y="144" width="600" height="44"/>
@@ -44,6 +48,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="02N-60-HKm" id="k5z-02-o9T"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where are you studying today? " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uWc-wS-zfb">
                                 <rect key="frame" x="0.0" y="86" width="600" height="21"/>
@@ -89,6 +96,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gbG-Ex-t3w" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="M9m-4k-FvC">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="02N-60-HKm" id="vUU-fn-D7u"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3403" y="-461"/>
         </scene>
@@ -435,6 +447,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="9lx-68-eBh" id="jJk-ZT-2Tt"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a URL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P31-7b-MZp">
                                 <rect key="frame" x="0.0" y="86" width="600" height="21"/>
@@ -444,6 +459,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.01176470588" green="0.70196078429999997" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="RjZ-wa-DW1" firstAttribute="top" secondItem="P31-7b-MZp" secondAttribute="bottom" constant="37" id="0CU-Zw-oXa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gmT-ab-qcI" secondAttribute="trailing" constant="-29" id="7qW-t7-XVR"/>
@@ -458,6 +474,9 @@
                             <constraint firstItem="RjZ-wa-DW1" firstAttribute="centerX" secondItem="Qu7-tn-xxm" secondAttribute="centerX" id="lNl-Xf-i9q"/>
                             <constraint firstAttribute="trailing" secondItem="P31-7b-MZp" secondAttribute="trailing" id="wed-xD-AUa"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="I5P-m8-yiH" appends="YES" id="2f7-Q3-fe1"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="mPQ-eh-Ur4">
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="SEL-pD-ZBc">
@@ -472,6 +491,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q4H-5o-iJZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="I5P-m8-yiH">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="9lx-68-eBh" id="B9w-Vg-cny"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="4069" y="-461"/>
         </scene>

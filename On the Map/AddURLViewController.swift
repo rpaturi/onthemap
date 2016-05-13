@@ -66,6 +66,24 @@ class AddURLViewController: UIViewController {
         dismissViewControllerAnimated(true, completion: nil)
 
     }
+}
+
+extension AddURLViewController: UITextFieldDelegate {
+    //dismiss keyboard when screen is tapped
+    @IBAction func dismissKeyboard(sender: AnyObject) {
+        if enterURL.isFirstResponder() {
+            enterURL.resignFirstResponder()
+        }
+    }
     
+    //dismiss keyboard when "return" on keyboard is tapped
+//    func textFieldShouldReturn(textField: UITextField) -> Bool {
+//        textField.resignFirstResponder()
+//        return true
+//    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        return textField.resignFirstResponder()
+    }
     
 }

@@ -87,6 +87,20 @@ class InformationPostingViewController: UIViewController {
             }
         }
     }
-    
+}
 
+extension InformationPostingViewController: UITextFieldDelegate {
+    //dismiss keyboard when screen is tapped
+    @IBAction func dismissKeyboard(sender: AnyObject) {
+        if enterLocation.isFirstResponder() {
+            enterLocation.resignFirstResponder()
+        }
+    }
+    
+    //dismiss keyboard when "return" on keyboard is tapped
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
 }
