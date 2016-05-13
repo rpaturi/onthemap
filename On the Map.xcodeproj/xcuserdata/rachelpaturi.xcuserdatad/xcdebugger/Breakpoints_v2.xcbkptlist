@@ -2,4 +2,66 @@
 <Bucket
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "On the Map/MapViewController.swift"
+            timestampString = "484793218.719612"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "On_the_Map.MapViewController.(logout (Swift.AnyObject) -&gt; ()).(closure #1)"
+                  moduleName = "On the Map"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rachelpaturi/Documents/AppDev/On%20the%20Map/On%20the%20Map/MapViewController.swift"
+                  timestampString = "484793218.785519"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "119"
+                  endingLineNumber = "119"
+                  offsetFromSymbolStart = "23">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "On_the_Map.MapViewController.(logout (Swift.AnyObject) -&gt; ()).(closure #1)"
+                  moduleName = "On the Map"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rachelpaturi/Documents/AppDev/On%20the%20Map/On%20the%20Map/MapViewController.swift"
+                  timestampString = "484793218.785745"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "119"
+                  endingLineNumber = "119"
+                  offsetFromSymbolStart = "69">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "On the Map/MapViewController.swift"
+            timestampString = "484846151.152137"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "121"
+            endingLineNumber = "121">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
