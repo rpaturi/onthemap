@@ -14,6 +14,7 @@ class TableViewViewController: UIViewController, UITableViewDataSource, UITableV
     var studentCount: Int!
     var studentData: [Student]!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var studentTableView: UITableView!
     
     override func viewDidLoad() {
@@ -25,7 +26,8 @@ class TableViewViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     override func viewWillAppear(animated: Bool) {
-        
+        activityIndicator.hidden = true
+        self.view.alpha = 1.0
         
         if let student = self.appDelegate.studentInfo.studentInfo {
             studentData = student
@@ -73,11 +75,24 @@ class TableViewViewController: UIViewController, UITableViewDataSource, UITableV
                     self.studentTableView.reloadData()
                     return
                 }
-                
             }
         }
     }
     
-
+    @IBAction func logout(sender: AnyObject) {
+        self.activityIndicator.hidden = false
+        self.activityIndicator.startAnimating()
+        
+        if self.activityIndicator.isAnimating() == true {
+            self.view.alpha = 0.5
+        }
+        
+        appDelegate.studentInfo.logout {(result, error) in
+            if let theResult = result {
+                let controller = self.storyboard!.instantiateViewControllerWithIdentifier("LoginVC")
+                self.presentViewController(controller, animated: true, completion: nil)
+            }
+        }
+    }
 
 }

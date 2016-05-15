@@ -119,6 +119,11 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cUN-Kj-it5">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" id="vgr-o4-QTa">
+                                    <rect key="frame" x="0.0" y="152" width="600" height="37"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="color" red="0.20784313725490197" green="0.45882352941176469" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
+                                </activityIndicatorView>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StudentInformationCell" textLabel="RkN-vD-2qz" detailTextLabel="ePc-Nr-Sot" rowHeight="60" style="IBUITableViewCellStyleSubtitle" id="F0x-Hu-9LE">
                                         <rect key="frame" x="0.0" y="92" width="600" height="60"/>
@@ -160,7 +165,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="On the Map" id="b4u-zK-k4j">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="gGK-bs-9vK"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="gGK-bs-9vK">
+                            <connections>
+                                <action selector="logout:" destination="WSf-Tl-kS6" id="VzU-Wt-FDk"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="refresh" id="rMZ-Yq-dQA">
                                 <connections>
@@ -175,6 +184,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="vgr-o4-QTa" id="d5Y-3h-E1f"/>
                         <outlet property="studentTableView" destination="cUN-Kj-it5" id="Gwr-I4-f1F"/>
                     </connections>
                 </viewController>
@@ -197,17 +207,28 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="WsD-vt-q9z">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                             </mapView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Fax-90-AGk">
+                                <rect key="frame" x="282" y="289" width="37" height="37"/>
+                                <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Fax-90-AGk" firstAttribute="centerY" secondItem="WsD-vt-q9z" secondAttribute="centerY" id="BVD-Tg-g5E"/>
                             <constraint firstAttribute="trailing" secondItem="WsD-vt-q9z" secondAttribute="trailing" id="EG2-44-egS"/>
                             <constraint firstItem="WsD-vt-q9z" firstAttribute="leading" secondItem="rrg-pv-rKT" secondAttribute="leading" id="Klh-wu-esJ"/>
                             <constraint firstItem="WsD-vt-q9z" firstAttribute="top" secondItem="YNv-aY-DNP" secondAttribute="bottom" id="Rgq-LS-sMP"/>
+                            <constraint firstItem="Fax-90-AGk" firstAttribute="centerX" secondItem="rrg-pv-rKT" secondAttribute="centerX" id="Wcn-dF-LUc"/>
+                            <constraint firstItem="WsD-vt-q9z" firstAttribute="centerX" secondItem="rrg-pv-rKT" secondAttribute="centerX" id="jZq-hh-FsB"/>
                             <constraint firstItem="WsD-vt-q9z" firstAttribute="bottom" secondItem="e08-6V-Fk5" secondAttribute="top" id="pWa-9C-4bp"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="On the Map" id="b7p-J4-O5t">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="4jc-Qj-l6H"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="4jc-Qj-l6H">
+                            <connections>
+                                <action selector="logout:" destination="5Im-vb-vvd" id="U4E-Au-wDe"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="refresh" id="0eO-4e-m87">
                                 <connections>
@@ -222,6 +243,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="Fax-90-AGk" id="o3q-T9-si8"/>
                         <outlet property="mapView" destination="WsD-vt-q9z" id="R1Y-xk-hOD"/>
                     </connections>
                 </viewController>
@@ -229,10 +251,10 @@
             </objects>
             <point key="canvasLocation" x="1829" y="-792"/>
         </scene>
-        <!--Login View Controller-->
+        <!--LoginVC-->
         <scene sceneID="5Dp-Jf-SjL">
             <objects>
-                <viewController storyboardIdentifier="loginViewController" id="aa3-Bp-asO" customClass="LoginViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" title="LoginVC" id="aa3-Bp-asO" customClass="LoginViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fnz-EB-uYC"/>
                         <viewControllerLayoutGuide type="bottom" id="Aoj-8K-IGn"/>
@@ -513,6 +535,10 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="6Ft-ZB-IQ7"/>
+                                <exclude reference="M8e-17-5bB"/>
+                                <exclude reference="hAk-Za-G0Q"/>
+                                <exclude reference="lGc-vM-X1W"/>
                                 <exclude reference="7Sz-ab-yQx"/>
                                 <exclude reference="E2E-Ex-CJL"/>
                                 <exclude reference="EQI-Qw-TSg"/>
@@ -528,10 +554,6 @@
                                 <exclude reference="dSq-zd-rT6"/>
                                 <exclude reference="eVb-4b-7ce"/>
                                 <exclude reference="yZP-Op-ky7"/>
-                                <exclude reference="6Ft-ZB-IQ7"/>
-                                <exclude reference="M8e-17-5bB"/>
-                                <exclude reference="hAk-Za-G0Q"/>
-                                <exclude reference="lGc-vM-X1W"/>
                                 <exclude reference="2gH-1e-RLz"/>
                                 <exclude reference="950-aR-Zsy"/>
                                 <exclude reference="DWG-Zs-Nrk"/>
@@ -556,6 +578,10 @@
                                 <include reference="Afi-Wm-fAp"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="M8e-17-5bB"/>
+                                <exclude reference="edQ-kg-bKT"/>
+                                <include reference="hAk-Za-G0Q"/>
+                                <include reference="lGc-vM-X1W"/>
                                 <exclude reference="7Sz-ab-yQx"/>
                                 <include reference="E2E-Ex-CJL"/>
                                 <include reference="IYS-av-pLA"/>
@@ -578,10 +604,6 @@
                                 <exclude reference="ppt-c9-oC6"/>
                                 <exclude reference="qfI-Az-U01"/>
                                 <include reference="yZP-Op-ky7"/>
-                                <include reference="M8e-17-5bB"/>
-                                <exclude reference="edQ-kg-bKT"/>
-                                <include reference="hAk-Za-G0Q"/>
-                                <include reference="lGc-vM-X1W"/>
                                 <include reference="DWG-Zs-Nrk"/>
                                 <include reference="Ppp-YS-Nsa"/>
                                 <exclude reference="TfG-0b-ZyX"/>
@@ -609,13 +631,13 @@
                                 <include reference="Afi-Wm-fAp"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="6Ft-ZB-IQ7"/>
+                                <exclude reference="M8e-17-5bB"/>
                                 <include reference="EQI-Qw-TSg"/>
                                 <include reference="wYy-b9-XqJ"/>
                                 <include reference="7u7-bh-r1a"/>
                                 <include reference="M2r-vZ-WCZ"/>
                                 <include reference="dSq-zd-rT6"/>
-                                <include reference="6Ft-ZB-IQ7"/>
-                                <exclude reference="M8e-17-5bB"/>
                                 <include reference="2gH-1e-RLz"/>
                                 <include reference="950-aR-Zsy"/>
                                 <include reference="enE-ko-YhQ"/>

@@ -12,6 +12,7 @@ import MapKit
 class MapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var appDelegate: AppDelegate!
     
@@ -30,7 +31,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
-        
+        activityIndicator.hidden = true
+        self.view.alpha = 1.0
         mapView.delegate = self
         
         //Store student's first and last name
@@ -110,6 +112,22 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             
             if let subtitleURL = annotation.subtitle {
                 UIApplication.sharedApplication().openURL(NSURL(string: subtitleURL!)!)
+            }
+        }
+    }
+    
+    @IBAction func logout(sender: AnyObject) {
+        self.activityIndicator.hidden = false
+        self.activityIndicator.startAnimating()
+        
+        if self.activityIndicator.isAnimating() == true {
+            self.view.alpha = 0.5
+        }
+        
+        appDelegate.studentInfo.logout {(result, error) in
+            if let theResult = result {
+                let controller = self.storyboard!.instantiateViewControllerWithIdentifier("LoginVC")
+                self.presentViewController(controller, animated: true, completion: nil)
             }
         }
     }
