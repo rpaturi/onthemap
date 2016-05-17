@@ -24,7 +24,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-                self.mapView.mapType = MKMapType.Standard
+        self.mapView.mapType = MKMapType.Standard
         
         // get the app delegate
         appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -63,10 +63,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             
             if let error = error {
                 print(error)
-                let alert = UIAlertController(title: "Data Error", message: "Unfortunately, the data did not load properly. Please try again", preferredStyle: .Alert)
-                let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
-                alert.addAction(action)
-                self.presentViewController(alert, animated: true, completion: nil)
+                let alertError = createAlertError("Data Error", message: "Unfortunately, the data did not load properly. Please try again")
+                self.presentViewController(alertError, animated: true, completion: nil)
                 return
             }
             
@@ -125,7 +123,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
         
         appDelegate.studentInfo.logout {(result, error) in
-            if let theResult = result {
+            if result != nil {
                 let controller = self.storyboard!.instantiateViewControllerWithIdentifier("LoginVC")
                 self.presentViewController(controller, animated: true, completion: nil)
             }

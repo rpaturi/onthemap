@@ -62,7 +62,10 @@ class InformationPostingViewController: UIViewController {
                 
                 let search = MKLocalSearch(request: request)
                 search.startWithCompletionHandler { (response, error) in
+                    
                     guard let response = response else {
+                        let geocodingError = createAlertError("Location Not Found", message: "Unfortunately, we could not find that location on the map. Please try again.")
+                        self.presentViewController(geocodingError, animated: true, completion: nil)
                         print("Search error: \(error)")
                         return
                     }
@@ -82,8 +85,6 @@ class InformationPostingViewController: UIViewController {
             if let addURLVC = segue.destinationViewController as? AddURLViewController {
                 addURLVC.mapString = enterLocation.text
                 addURLVC.location = location
-                print("I am sending the location: \(addURLVC.location) I think")
-                
             }
         }
     }

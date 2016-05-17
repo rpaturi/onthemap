@@ -94,7 +94,7 @@ extension StudentInformation {
         })
     }
     
-    func postLocationToParse(mapString: String, mediaURL: String, coordinates: CLLocationCoordinate2D, completionHandlerForPostLocation: (()) -> Void ) {
+    func postLocationToParse(mapString: String, mediaURL: String, coordinates: CLLocationCoordinate2D, completionHandlerForPostLocation: (result: AnyObject?, errorAlert: UIAlertController?) -> Void ) {
         guard let userIDNumber = self.userID else {
             print("Optional values of \(self.userID) was not unwrapped properly")
             return
@@ -111,7 +111,21 @@ extension StudentInformation {
         
         taskForPOSTMethod(methodString, parameters: [:], jsonBody: jsonBody, apiScheme: Constants.ParseURL.ApiScheme, apiHost: Constants.ParseURL.ApiHost, apiPath: Constants.ParseURL.ApiPath, completionHandlerForPOST: {(result, error) in
             
-            completionHandlerForPostLocation()
+            guard error == nil else{
+                if let theError = error {
+                    let alertError: UIAlertController
+                    
+                    switch theError.code {
+                    case 1: alertError = createAlertError("Network Failure", message: "We are sorry! We are not able to connect to the network")
+                    case 3: alertError = createAlertError("Post Failed", message: "Unfortunately, we could not submit your location. Please try again")
+                    default: alertError = createAlertError("Sorry!", message: "Unfortunately, we are experiences from technical difficulties")
+                    }
+                    completionHandlerForPostLocation(result: nil, errorAlert: alertError)
+                }
+                return
+            }
+            
+            completionHandlerForPostLocation(result: result, errorAlert: nil)
         })
     }
 }

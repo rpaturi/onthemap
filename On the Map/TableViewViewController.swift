@@ -88,7 +88,7 @@ class TableViewViewController: UIViewController, UITableViewDataSource, UITableV
         }
         
         appDelegate.studentInfo.logout {(result, error) in
-            if let theResult = result {
+            if result != nil {
                 let controller = self.storyboard!.instantiateViewControllerWithIdentifier("LoginVC")
                 self.presentViewController(controller, animated: true, completion: nil)
             }

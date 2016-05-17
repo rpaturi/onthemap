@@ -58,9 +58,14 @@ class AddURLViewController: UIViewController {
         
         if let theMapString = mapString, let theLocation = location, let urlText = enterURL.text {
             
-            appDelegate.studentInfo.postLocationToParse(theMapString, mediaURL: urlText, coordinates: theLocation, completionHandlerForPostLocation: { () in
-                        
-                    })
+            appDelegate.studentInfo.postLocationToParse(theMapString, mediaURL: urlText, coordinates: theLocation, completionHandlerForPostLocation: { (result, errorAlert) in
+                if let theErrorAlert = errorAlert {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.presentViewController(theErrorAlert, animated: true, completion: nil)
+                        return
+                    }
+                }
+            })
         }
         
         dismissViewControllerAnimated(true, completion: nil)
@@ -77,13 +82,9 @@ extension AddURLViewController: UITextFieldDelegate {
     }
     
     //dismiss keyboard when "return" on keyboard is tapped
-//    func textFieldShouldReturn(textField: UITextField) -> Bool {
-//        textField.resignFirstResponder()
-//        return true
-//    }
-    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        return textField.resignFirstResponder()
+        textField.resignFirstResponder()
+        return true
     }
     
 }
