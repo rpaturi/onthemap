@@ -15,11 +15,13 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var facebookLoginButton: UIButton!
     @IBOutlet weak var loginErrorLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var appDelegate: AppDelegate!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityIndicator.hidden = true
         
         // get the app delegate
         appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -43,21 +45,31 @@ class LoginViewController: UIViewController {
             loginErrorLabel.text = "Please enter in your username and password"
         } else {
             loginErrorLabel.text = "Verifying..."
-            appDelegate.studentInfo.loginToUdacity(usernameTextField.text!, password: passwordTextField.text!, completionHandlerForLogin: { () in
+            
+            appDelegate.studentInfo.loginToUdacity(usernameTextField.text!, password: passwordTextField.text!, completionHandlerForLogin: { (result, errorAlert) in
                 
-                print(self.appDelegate.studentInfo.userID)
-                
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.loginErrorLabel.text = ""
-                    
-                    //Once logged in, show the map view in the tab bar controller
-                    let controller = self.storyboard!.instantiateViewControllerWithIdentifier("MapTabBarController") as! UITabBarController
-                    self.presentViewController(controller, animated: false, completion: nil)
+                if let theErrorAlert = errorAlert {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.loginErrorLabel.text = ""
+                        self.presentViewController(theErrorAlert, animated: true, completion: nil)
+                        return
+                    }
+                } else {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.activityIndicator.hidden = false
+                        self.activityIndicator.startAnimating()
+                        if self.activityIndicator.isAnimating() == true {
+                            self.view.alpha = 0.5
+                        }
+                        
+                        //Once logged in, show the map view in the tab bar controller
+                        let controller = self.storyboard!.instantiateViewControllerWithIdentifier("MapTabBarController") as! UITabBarController
+                        self.presentViewController(controller, animated: false, completion: nil)
+                    }
                 }
             })
         }
     }
-
 }
 
 extension LoginViewController: UITextFieldDelegate {

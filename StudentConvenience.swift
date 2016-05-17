@@ -57,12 +57,26 @@ extension StudentInformation {
     
     
     //MARK: POST functions
-    func loginToUdacity(username: String, password: String, completionHandlerForLogin: (()) -> Void) {
+    func loginToUdacity(username: String, password: String, completionHandlerForLogin: (result: AnyObject?, errorAlert: UIAlertController?) -> Void) {
         
         let jsonBody: String = "{\"udacity\": {\"\(JSONBodyKeys.Udacity.username)\": \"\(username)\", \"\(JSONBodyKeys.Udacity.password)\": \"\(password)\"}}"
         
         taskForPOSTMethod(Method.UdacityMethods.session, parameters: [:], jsonBody: jsonBody, apiScheme: Constants.UdacityURL.ApiScheme, apiHost: Constants.UdacityURL.ApiHost, apiPath: Constants.UdacityURL.ApiPath, completionHandlerForPOST: {(result, error) in
-        
+            
+            guard error == nil else{
+                if let theError = error {
+                    let alertError: UIAlertController
+                    
+                    switch theError.code {
+                        case 0: alertError = createAlertError("Login Error", message: "Wrong user name and/or password. Please try again")
+                        case 1: alertError = createAlertError("Network Failure", message: "We are sorry! We are not able to connect to the network")
+                        default: alertError = createAlertError("Sorry!", message: "Unfortunately, we are experiences from technical difficulties")
+                    }
+                    completionHandlerForLogin(result: nil, errorAlert: alertError)
+                }
+                return
+            }
+            
             guard let account = result["account"] as? [String : AnyObject] else {
                 print("We could not find \(result["account"])")
                 return
@@ -72,10 +86,10 @@ extension StudentInformation {
                 print("We could not find \(result["key"]) in \(account)")
                 return
             }
-            
             self.userID = userKey
+            print(userKey)
             
-            completionHandlerForLogin()
+            completionHandlerForLogin(result: result, errorAlert: nil)
             
         })
     }

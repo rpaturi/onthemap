@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="aa3-Bp-asO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="aa3-Bp-asO">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -327,7 +327,7 @@
                                         </variation>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login to Udacity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tft-ug-Cro">
-                                        <rect key="frame" x="58" y="138" width="125" height="21"/>
+                                        <rect key="frame" x="57" y="138" width="125" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="hxo-lT-HOy"/>
                                         </constraints>
@@ -475,6 +475,10 @@
                                     </mask>
                                 </variation>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="fBJ-t7-xDR">
+                                <rect key="frame" x="282" y="281.5" width="37" height="37"/>
+                                <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -500,6 +504,7 @@
                             </constraint>
                             <constraint firstItem="Jqo-MX-Gdh" firstAttribute="top" secondItem="sUj-SD-mOM" secondAttribute="bottom" constant="15" id="F2W-lU-uiJ"/>
                             <constraint firstItem="Afi-Wm-fAp" firstAttribute="top" secondItem="UMO-x4-itm" secondAttribute="bottom" constant="90" id="F6V-Vd-lMD"/>
+                            <constraint firstItem="fBJ-t7-xDR" firstAttribute="centerX" secondItem="mUY-4A-7hP" secondAttribute="centerX" id="FaK-pU-zSI"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Jqo-MX-Gdh" secondAttribute="trailing" id="Hsc-A9-Po4"/>
                             <constraint firstItem="rdB-Fv-F05" firstAttribute="trailing" secondItem="UMO-x4-itm" secondAttribute="trailing" id="IHK-Kw-d6i"/>
                             <constraint firstAttribute="trailingMargin" secondItem="sUj-SD-mOM" secondAttribute="trailing" id="IYS-av-pLA"/>
@@ -526,6 +531,7 @@
                             <constraint firstItem="UMO-x4-itm" firstAttribute="top" secondItem="mdh-fa-byN" secondAttribute="bottom" constant="14" id="joC-fq-hmu"/>
                             <constraint firstItem="Kb5-Ah-wC6" firstAttribute="leading" secondItem="mUY-4A-7hP" secondAttribute="leadingMargin" constant="193" id="lGc-vM-X1W"/>
                             <constraint firstItem="sUj-SD-mOM" firstAttribute="top" secondItem="w5R-Rg-LOc" secondAttribute="bottom" constant="25" id="lGg-ue-M77"/>
+                            <constraint firstItem="fBJ-t7-xDR" firstAttribute="centerY" secondItem="mUY-4A-7hP" secondAttribute="centerY" id="mUQ-Mu-7xk"/>
                             <constraint firstItem="rdB-Fv-F05" firstAttribute="top" secondItem="Jqo-MX-Gdh" secondAttribute="bottom" constant="15" id="ppt-c9-oC6"/>
                             <constraint firstItem="sUj-SD-mOM" firstAttribute="top" secondItem="Kb5-Ah-wC6" secondAttribute="bottom" constant="25" id="q4Z-n5-oKG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="rdB-Fv-F05" secondAttribute="trailing" id="qfI-Az-U01"/>
@@ -649,6 +655,7 @@
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="fBJ-t7-xDR" id="F9F-ED-Thh"/>
                         <outlet property="facebookLoginButton" destination="Afi-Wm-fAp" id="KvO-zs-Q6W"/>
                         <outlet property="loginButton" destination="rdB-Fv-F05" id="2vb-Zb-ov7"/>
                         <outlet property="loginErrorLabel" destination="UMO-x4-itm" id="ddu-Tt-viz"/>
@@ -838,6 +845,6 @@
         <image name="list icon-Small" width="29" height="29"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="MBo-I7-iM2"/>
+        <segue reference="M44-lc-J2b"/>
     </inferredMetricsTieBreakers>
 </document>

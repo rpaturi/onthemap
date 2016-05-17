@@ -153,6 +153,16 @@ class StudentInformation {
             
             /* GUARD: Did we get a successful 2XX response? */
             guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+                if let code = (response as? NSHTTPURLResponse)?.statusCode {
+                    let statusCode = code
+                    switch statusCode {
+                    case 300...399:
+                        completionHandlerForPOST(result: nil, error: HttpError.init().redirectError)
+                    case 400...499:  completionHandlerForPOST(result: nil, error: HttpError.init().badRequestError)
+                    case 500...599: completionHandlerForPOST(result: nil, error: HttpError.init().networkFailure)
+                    default: completionHandlerForPOST(result: nil, error: error)
+                    }
+                }
                 print("Your request returned a status code other than 2xx!. This is your status code: \(response)")
                 return
             }
