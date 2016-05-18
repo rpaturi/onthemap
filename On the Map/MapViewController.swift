@@ -8,6 +8,8 @@
 
 import UIKit
 import MapKit
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 class MapViewController: UIViewController, MKMapViewDelegate {
 
@@ -59,6 +61,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     func getStudentLocation() {
 
         //Get student location data from Parse server and create map annotations
+        
         appDelegate.studentInfo.getStudentLocation { (result, error) in
             
             if let error = error {

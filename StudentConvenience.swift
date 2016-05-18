@@ -94,6 +94,31 @@ extension StudentInformation {
         })
     }
     
+    func facebookLogin(fbAccessToken: String) {
+        let methodString = "\(Method.UdacityMethods.session)"
+        
+        let jsonBody: String = "{\"facebook_mobile\": {\"access_token\": \"\(fbAccessToken);\"}}"
+        
+        taskForPOSTMethod(methodString, parameters: [:], jsonBody: jsonBody, apiScheme: Constants.UdacityURL.ApiScheme, apiHost: Constants.UdacityURL.ApiHost, apiPath: Constants.UdacityURL.ApiPath) { (result, error) in
+            
+            guard error == nil else {
+                print(error)
+                return
+            }
+            
+            guard let account = result["account"] as? [String : AnyObject] else {
+                print("We could not find \(result["account"])")
+                return
+            }
+            
+            guard let userKey = account["key"] as? String else {
+                print("We could not find \(result["key"]) in \(account)")
+                return
+            }
+            self.userID = userKey
+        }
+    }
+    
     func postLocationToParse(mapString: String, mediaURL: String, coordinates: CLLocationCoordinate2D, completionHandlerForPostLocation: (result: AnyObject?, errorAlert: UIAlertController?) -> Void ) {
         guard let userIDNumber = self.userID else {
             print("Optional values of \(self.userID) was not unwrapped properly")

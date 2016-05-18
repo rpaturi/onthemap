@@ -7,13 +7,15 @@
 //
 
 import UIKit
+import FBSDKCoreKit
+import FBSDKLoginKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var facebookLoginButton: UIButton!
+    @IBOutlet weak var facebookLoginButton: FBSDKLoginButton!
     @IBOutlet weak var loginErrorLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
@@ -22,6 +24,9 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicator.hidden = true
+        
+        facebookLoginButton.delegate = self
+        facebookLoginButton.readPermissions = ["email"]
         
         // get the app delegate
         appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -69,6 +74,18 @@ class LoginViewController: UIViewController {
                 }
             })
         }
+    }
+    
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        print("Logged Out")
+    }
+    
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        appDelegate.studentInfo.facebookLogin(FBSDKAccessToken.currentAccessToken().tokenString)
+        
+        let controller = self.storyboard!.instantiateViewControllerWithIdentifier("MapTabBarController") as! UITabBarController
+        self.presentViewController(controller, animated: false, completion: nil)
+        
     }
 }
 
