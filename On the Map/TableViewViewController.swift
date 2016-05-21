@@ -31,17 +31,20 @@ class TableViewViewController: UIViewController, UITableViewDataSource, UITableV
         activityIndicator.hidden = true
         self.view.alpha = 1.0
         
+        //Find out how many tableView rows are needed
         if let student = self.appDelegate.studentInfo.studentInfo {
             studentData = student
             studentCount = student.count
         }
 
     }
-
+    
+    //Set number of tableView rows
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return studentCount
     }
     
+    //Format student Information cell
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("StudentInformationCell", forIndexPath: indexPath)
         
@@ -52,6 +55,7 @@ class TableViewViewController: UIViewController, UITableViewDataSource, UITableV
         return cell
     }
     
+    //Open student URL in default browser when tapped 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let student = studentData[indexPath.row]
         

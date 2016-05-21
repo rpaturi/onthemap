@@ -25,7 +25,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        //Set map to standard map view
         self.mapView.mapType = MKMapType.Standard
         
     }
@@ -33,6 +33,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     override func viewWillAppear(animated: Bool) {
         activityIndicator.hidden = true
         self.view.alpha = 1.0
+        
+        //Set map delegate
         mapView.delegate = self
         
         // get the app delegate
@@ -41,13 +43,15 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         //Store student's first and last name
         appDelegate.studentInfo.getStudentInformation { }
         
+        //Get student location data to create map pins
         getStudentLocation()
     }
-
+    
     @IBAction func refreshData(sender: AnyObject) {
         getStudentLocation()
     }
     
+    //Create map pins for map view with the first name, last name, and media URL
     func createMapAnnotation(students : [Student]) {
         for student in students {
             let annotation = MKPointAnnotation()
@@ -84,6 +88,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
     }
    
+    //Create MKAnnotationView  and setup call out button so user can tap on the call out for media url
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation {
             return nil
@@ -106,6 +111,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         return pinView
     }
     
+    //Open student's media URL in Safari when you click on call out icon
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
             guard let annotation = view.annotation else {

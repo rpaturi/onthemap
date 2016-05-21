@@ -25,6 +25,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         super.viewDidLoad()
         activityIndicator.hidden = true
         
+        //set facebook delegate
         facebookLoginButton.delegate = self
         
         // get the app delegate
@@ -79,6 +80,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         print("Logged Out")
     }
     
+    //Login with linked Facebook profile to Udacity
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         appDelegate.studentInfo.facebookLogin(FBSDKAccessToken.currentAccessToken().tokenString) { (result, error) in
             guard error == nil else {
@@ -90,6 +92,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 return
             }
             
+            //Once logged in, show the map view in the tab bar controller
             let controller = self.storyboard!.instantiateViewControllerWithIdentifier("MapTabBarController") as! UITabBarController
             self.presentViewController(controller, animated: false, completion: nil)
         }

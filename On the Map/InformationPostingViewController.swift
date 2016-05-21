@@ -55,6 +55,7 @@ class InformationPostingViewController: UIViewController {
                 self.view.alpha = 1.0
             }
             
+            //Find user's location from search term
             if let userLocation = enterLocation.text {
                 let request = MKLocalSearchRequest()
                 request.naturalLanguageQuery = userLocation
@@ -73,6 +74,7 @@ class InformationPostingViewController: UIViewController {
                     let responseItem = response.mapItems[0]
                     self.location = responseItem.placemark.coordinate
                     
+                    //Segue to AddURLViewController with location information
                     self.performSegueWithIdentifier("postLocation", sender: self.location as? AnyObject)
 
                 }
@@ -80,6 +82,7 @@ class InformationPostingViewController: UIViewController {
         }
     }
     
+    //Send location data to AddURLVC
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "postLocation" {
             if let addURLVC = segue.destinationViewController as? AddURLViewController {

@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DE014BD81CEBDBDA006BE4F4 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE014BD61CEBDBDA006BE4F4 /* FBSDKCoreKit.framework */; };
-		DE014BD91CEBDBDA006BE4F4 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE014BD71CEBDBDA006BE4F4 /* FBSDKLoginKit.framework */; };
+		DE014BDC1CEFE552006BE4F4 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE014BDA1CEFE552006BE4F4 /* FBSDKCoreKit.framework */; };
+		DE014BDD1CEFE552006BE4F4 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE014BDB1CEFE552006BE4F4 /* FBSDKLoginKit.framework */; };
 		DE0A82591CC40FBF001197B6 /* StudentConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0A82581CC40FBF001197B6 /* StudentConvenience.swift */; };
 		DE0A825B1CC4129D001197B6 /* StudentClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0A825A1CC4129D001197B6 /* StudentClient.swift */; };
 		DE252D4F1CDA96DF000C2592 /* AddURLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE252D4E1CDA96DF000C2592 /* AddURLViewController.swift */; };
@@ -26,8 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		DE014BD61CEBDBDA006BE4F4 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		DE014BD71CEBDBDA006BE4F4 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		DE014BDA1CEFE552006BE4F4 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		DE014BDB1CEFE552006BE4F4 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		DE0A82581CC40FBF001197B6 /* StudentConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentConvenience.swift; sourceTree = SOURCE_ROOT; };
 		DE0A825A1CC4129D001197B6 /* StudentClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentClient.swift; sourceTree = "<group>"; };
 		DE252D4E1CDA96DF000C2592 /* AddURLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddURLViewController.swift; sourceTree = "<group>"; };
@@ -51,8 +51,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE014BD91CEBDBDA006BE4F4 /* FBSDKLoginKit.framework in Frameworks */,
-				DE014BD81CEBDBDA006BE4F4 /* FBSDKCoreKit.framework in Frameworks */,
+				DE014BDD1CEFE552006BE4F4 /* FBSDKLoginKit.framework in Frameworks */,
+				DE014BDC1CEFE552006BE4F4 /* FBSDKCoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +88,8 @@
 			children = (
 				DEBED06C1CA3455100AC1EE0 /* On the Map */,
 				DEBED06B1CA3455100AC1EE0 /* Products */,
+				DE014BDA1CEFE552006BE4F4 /* FBSDKCoreKit.framework */,
+				DE014BDB1CEFE552006BE4F4 /* FBSDKLoginKit.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,8 +111,6 @@
 				DEBED0741CA3455200AC1EE0 /* Assets.xcassets */,
 				DEBED0761CA3455200AC1EE0 /* LaunchScreen.storyboard */,
 				DEBED0791CA3455200AC1EE0 /* Info.plist */,
-				DE014BD61CEBDBDA006BE4F4 /* FBSDKCoreKit.framework */,
-				DE014BD71CEBDBDA006BE4F4 /* FBSDKLoginKit.framework */,
 			);
 			path = "On the Map";
 			sourceTree = "<group>";
@@ -312,6 +312,7 @@
 					"$(PROJECT_DIR)/On",
 					the,
 					Map,
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "On the Map/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -329,6 +330,7 @@
 					"$(PROJECT_DIR)/On",
 					the,
 					Map,
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "On the Map/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

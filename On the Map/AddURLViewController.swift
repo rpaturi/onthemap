@@ -24,7 +24,9 @@ class AddURLViewController: UIViewController {
         
         super.viewWillAppear(animated)
         
+        //Make sure the location information was sent from InformationPostingViewController
         if let theLocation = location {
+            //Set map coordinates and zoom into the location
             self.mapView.centerCoordinate = theLocation
             
             let annotation = MKPointAnnotation()
