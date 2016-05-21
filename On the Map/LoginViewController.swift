@@ -26,7 +26,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         activityIndicator.hidden = true
         
         facebookLoginButton.delegate = self
-        facebookLoginButton.readPermissions = ["email"]
         
         // get the app delegate
         appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -81,11 +80,19 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        appDelegate.studentInfo.facebookLogin(FBSDKAccessToken.currentAccessToken().tokenString)
-        
-        let controller = self.storyboard!.instantiateViewControllerWithIdentifier("MapTabBarController") as! UITabBarController
-        self.presentViewController(controller, animated: false, completion: nil)
-        
+        appDelegate.studentInfo.facebookLogin(FBSDKAccessToken.currentAccessToken().tokenString) { (result, error) in
+            guard error == nil else {
+                dispatch_async(dispatch_get_main_queue()) {
+                    let errorAlert = createAlertError("Login Error", message: "Sorry we couldnlt log you in with Facebook. Please try again")
+                    self.presentViewController(errorAlert, animated: true, completion: nil)
+                    return
+                }
+                return
+            }
+            
+            let controller = self.storyboard!.instantiateViewControllerWithIdentifier("MapTabBarController") as! UITabBarController
+            self.presentViewController(controller, animated: false, completion: nil)
+        }
     }
 }
 

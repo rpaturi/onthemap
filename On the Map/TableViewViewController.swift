@@ -89,10 +89,16 @@ class TableViewViewController: UIViewController, UITableViewDataSource, UITableV
             self.view.alpha = 0.5
         }
         
-        appDelegate.studentInfo.logout {(result, error) in
-            if result != nil {
-                let controller = self.storyboard!.instantiateViewControllerWithIdentifier("LoginVC")
-                self.presentViewController(controller, animated: true, completion: nil)
+        if FBSDKAccessToken.currentAccessToken() != nil {
+            FBSDKLoginManager().logOut()
+            let controller = self.storyboard!.instantiateViewControllerWithIdentifier("LoginVC")
+            self.presentViewController(controller, animated: true, completion: nil)
+        } else {
+            appDelegate.studentInfo.logout {(result, error) in
+                if result != nil {
+                    let controller = self.storyboard!.instantiateViewControllerWithIdentifier("LoginVC")
+                    self.presentViewController(controller, animated: true, completion: nil)
+                }
             }
         }
     }

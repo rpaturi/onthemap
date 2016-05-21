@@ -28,14 +28,15 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         // Do any additional setup after loading the view.
         self.mapView.mapType = MKMapType.Standard
         
-        // get the app delegate
-        appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     }
     
     override func viewWillAppear(animated: Bool) {
         activityIndicator.hidden = true
         self.view.alpha = 1.0
         mapView.delegate = self
+        
+        // get the app delegate
+        appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
         //Store student's first and last name
         appDelegate.studentInfo.getStudentInformation { }
@@ -125,10 +126,16 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             self.view.alpha = 0.5
         }
         
-        appDelegate.studentInfo.logout {(result, error) in
-            if result != nil {
-                let controller = self.storyboard!.instantiateViewControllerWithIdentifier("LoginVC")
-                self.presentViewController(controller, animated: true, completion: nil)
+        if FBSDKAccessToken.currentAccessToken() != nil {
+            FBSDKLoginManager().logOut()
+            let controller = self.storyboard!.instantiateViewControllerWithIdentifier("LoginVC")
+            self.presentViewController(controller, animated: true, completion: nil)
+        } else {
+            appDelegate.studentInfo.logout {(result, error) in
+                if result != nil {
+                    let controller = self.storyboard!.instantiateViewControllerWithIdentifier("LoginVC")
+                    self.presentViewController(controller, animated: true, completion: nil)
+                }
             }
         }
     }

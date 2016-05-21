@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "On the Map/MapViewController.swift"
-            timestampString = "485277624.143925"
+            timestampString = "485286652.596564"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138">
+            startingLineNumber = "147"
+            endingLineNumber = "147">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -56,26 +56,42 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "On the Map/MapViewController.swift"
-            timestampString = "485277624.143925"
+            timestampString = "485286652.596564"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140">
+            startingLineNumber = "149"
+            endingLineNumber = "149">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "On the Map/LoginViewController.swift"
-            timestampString = "485277624.143925"
+            filePath = "StudentConvenience.swift"
+            timestampString = "485281962.061425"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "loginButton(_:)"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "facebookLogin(_:completionHandlerForFBLogin:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StudentConvenience.swift"
+            timestampString = "485286362.314063"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "facebookLogin(_:completionHandlerForFBLogin:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
