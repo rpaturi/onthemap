@@ -18,8 +18,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var facebookLoginButton: FBSDKLoginButton!
     @IBOutlet weak var loginErrorLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
-    var appDelegate: AppDelegate!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,9 +25,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         //set facebook delegate
         facebookLoginButton.delegate = self
-        
-        // get the app delegate
-        appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,7 +47,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         } else {
             loginErrorLabel.text = "Verifying..."
             
-            appDelegate.studentInfo.loginToUdacity(usernameTextField.text!, password: passwordTextField.text!, completionHandlerForLogin: { (result, errorAlert) in
+           StudentInformation.sharedInstance().loginToUdacity(usernameTextField.text!, password: passwordTextField.text!, completionHandlerForLogin: { (result, errorAlert) in
                 
                 if let theErrorAlert = errorAlert {
                     dispatch_async(dispatch_get_main_queue()) {
@@ -82,7 +78,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     //Login with linked Facebook profile to Udacity
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        appDelegate.studentInfo.facebookLogin(FBSDKAccessToken.currentAccessToken().tokenString) { (result, error) in
+        StudentInformation.sharedInstance().facebookLogin(FBSDKAccessToken.currentAccessToken().tokenString) { (result, error) in
             guard error == nil else {
                 dispatch_async(dispatch_get_main_queue()) {
                     let errorAlert = createAlertError("Login Error", message: "Sorry we couldnlt log you in with Facebook. Please try again")

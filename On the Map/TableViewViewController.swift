@@ -12,7 +12,6 @@ import FBSDKLoginKit
 
 class TableViewViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
 
-    var appDelegate: AppDelegate!
     var studentCount: Int!
     var studentData: [Student]!
     
@@ -21,9 +20,6 @@ class TableViewViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // get the app delegate
-        appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
     }
     
@@ -32,7 +28,7 @@ class TableViewViewController: UIViewController, UITableViewDataSource, UITableV
         self.view.alpha = 1.0
         
         //Find out how many tableView rows are needed
-        if let student = self.appDelegate.studentInfo.studentInfo {
+        if let student = StudentInformation.sharedInstance().studentInfo {
             studentData = student
             studentCount = student.count
         }
@@ -66,14 +62,14 @@ class TableViewViewController: UIViewController, UITableViewDataSource, UITableV
     @IBAction func refreshData(sender: AnyObject) {
         
         //Get student location data from Parse server
-        appDelegate.studentInfo.getStudentLocation { (result, error) in
+        StudentInformation.sharedInstance().getStudentLocation { (result, error) in
             guard let results = result["results"] as? [[String:AnyObject]] else {
                 print("We could not find \(result["results"])")
                 return
             }
             
-            self.appDelegate.studentInfo.studentInfo = Student.studentsFromResults(results)
-            if let studentInfo = self.appDelegate.studentInfo.studentInfo {
+            StudentInformation.sharedInstance().studentInfo = Student.studentsFromResults(results)
+            if let studentInfo = StudentInformation.sharedInstance().studentInfo {
                 self.studentData = studentInfo
                 self.studentCount = studentInfo.count
                 
@@ -98,7 +94,7 @@ class TableViewViewController: UIViewController, UITableViewDataSource, UITableV
             let controller = self.storyboard!.instantiateViewControllerWithIdentifier("LoginVC")
             self.presentViewController(controller, animated: true, completion: nil)
         } else {
-            appDelegate.studentInfo.logout {(result, error) in
+            StudentInformation.sharedInstance().logout {(result, error) in
                 if result != nil {
                     let controller = self.storyboard!.instantiateViewControllerWithIdentifier("LoginVC")
                     self.presentViewController(controller, animated: true, completion: nil)

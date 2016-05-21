@@ -16,11 +16,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    var appDelegate: AppDelegate!
-    
     var students: [Student] = [Student]()
     //Parse Student Location Parameters
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,11 +34,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         //Set map delegate
         mapView.delegate = self
         
-        // get the app delegate
-        appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        
         //Store student's first and last name
-        appDelegate.studentInfo.getStudentInformation { }
+        StudentInformation.sharedInstance().getStudentInformation { }
         
         //Get student location data to create map pins
         getStudentLocation()
@@ -67,7 +61,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 
         //Get student location data from Parse server and create map annotations
         
-        appDelegate.studentInfo.getStudentLocation { (result, error) in
+        StudentInformation.sharedInstance().getStudentLocation { (result, error) in
             
             if let error = error {
                 print(error)
@@ -81,8 +75,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 return
             }
             
-            self.appDelegate.studentInfo.studentInfo = Student.studentsFromResults(results)
-            if let studentInfo = self.appDelegate.studentInfo.studentInfo {
+            StudentInformation.sharedInstance().studentInfo = Student.studentsFromResults(results)
+            if let studentInfo = StudentInformation.sharedInstance().studentInfo {
                 self.createMapAnnotation(studentInfo)
             }
         }
@@ -137,7 +131,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             let controller = self.storyboard!.instantiateViewControllerWithIdentifier("LoginVC")
             self.presentViewController(controller, animated: true, completion: nil)
         } else {
-            appDelegate.studentInfo.logout {(result, error) in
+            StudentInformation.sharedInstance().logout {(result, error) in
                 if result != nil {
                     let controller = self.storyboard!.instantiateViewControllerWithIdentifier("LoginVC")
                     self.presentViewController(controller, animated: true, completion: nil)

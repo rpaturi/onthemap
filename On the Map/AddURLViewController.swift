@@ -13,7 +13,6 @@ import MapKit
 
 class AddURLViewController: UIViewController {
     
-    var appDelegate: AppDelegate!
     var location: CLLocationCoordinate2D?
     var mapString: String?
     
@@ -46,9 +45,7 @@ class AddURLViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // get the app delegate
-        appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+
     }
     
     @IBAction func cancelPost(sender: AnyObject) {
@@ -60,7 +57,7 @@ class AddURLViewController: UIViewController {
         
         if let theMapString = mapString, let theLocation = location, let urlText = enterURL.text {
             
-            appDelegate.studentInfo.postLocationToParse(theMapString, mediaURL: urlText, coordinates: theLocation, completionHandlerForPostLocation: { (result, errorAlert) in
+            StudentInformation.sharedInstance().postLocationToParse(theMapString, mediaURL: urlText, coordinates: theLocation, completionHandlerForPostLocation: { (result, errorAlert) in
                 if let theErrorAlert = errorAlert {
                     dispatch_async(dispatch_get_main_queue()) {
                         self.presentViewController(theErrorAlert, animated: true, completion: nil)
