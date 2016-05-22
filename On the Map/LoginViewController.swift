@@ -27,11 +27,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         facebookLoginButton.delegate = self
 
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     //Allow user to sign up for a Udacity.com account
     @IBAction func signUpForUdacityAccount(sender: AnyObject) {

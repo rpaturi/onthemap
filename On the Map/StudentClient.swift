@@ -135,8 +135,8 @@ class StudentInformation {
         }
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         if apiHost == "api.parse.com" {
-            request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
-            request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
+            request.addValue(HTTPHeader.HeaderValue.parseAppID, forHTTPHeaderField: HTTPHeader.HeaderField.parseAppID)
+            request.addValue(HTTPHeader.HeaderValue.parseAPIKey, forHTTPHeaderField: HTTPHeader.HeaderField.parseAPIkey)
         }
         request.HTTPBody = jsonBody.dataUsingEncoding(NSUTF8StringEncoding)
         
