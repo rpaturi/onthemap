@@ -57,8 +57,8 @@ class StudentInformation {
         let request = NSMutableURLRequest(URL: urlFromParameters(apiScheme, host: apiHost, path: apiPath, parameters: parameters, withPathExtension: method))
         
         if apiHost == "api.parse.com" {
-            request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
-            request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
+            request.addValue(HTTPHeader.HeaderValue.parseAppID, forHTTPHeaderField: HTTPHeader.HeaderField.parseAppID)
+            request.addValue(HTTPHeader.HeaderValue.parseAPIKey, forHTTPHeaderField: HTTPHeader.HeaderField.parseAPIkey)
         }
         
         /* 3. Configure the request */
@@ -147,6 +147,7 @@ class StudentInformation {
         let task = session.dataTaskWithRequest(request) { data, response, error in
             /* GUARD: Was there an error? */
             guard (error == nil) else {
+                completionHandlerForPOST(result: nil, error: error)
                 print("There was an error with your request: \(error)")
                 return
             }

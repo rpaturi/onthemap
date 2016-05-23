@@ -19,7 +19,7 @@ class InformationPostingViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewWillAppear(animated: Bool) {
-        activityIndicator.hidden = true
+        activityIndicator.hidesWhenStopped = true
         self.view.alpha = 1.0
     }
     
@@ -46,7 +46,6 @@ class InformationPostingViewController: UIViewController {
             return
             
         } else {
-            activityIndicator.hidden = false
             activityIndicator.startAnimating()
             
             if activityIndicator.isAnimating() == true {
@@ -67,6 +66,9 @@ class InformationPostingViewController: UIViewController {
                     guard let response = response else {
                         let geocodingError = createAlertError("Location Not Found", message: "Unfortunately, we could not find that location on the map. Please try again.")
                         self.presentViewController(geocodingError, animated: true, completion: nil)
+                        
+                        self.activityIndicator.stopAnimating()
+                        
                         print("Search error: \(error)")
                         return
                     }
@@ -85,6 +87,8 @@ class InformationPostingViewController: UIViewController {
     //Send location data to AddURLVC
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "postLocation" {
+            self.activityIndicator.stopAnimating()
+            
             if let addURLVC = segue.destinationViewController as? AddURLViewController {
                 addURLVC.mapString = enterLocation.text
                 addURLVC.location = location

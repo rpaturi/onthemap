@@ -65,12 +65,13 @@ extension StudentInformation {
             
             guard error == nil else{
                 if let theError = error {
+                    
                     let alertError: UIAlertController
                     
                     switch theError.code {
                         case 0: alertError = createAlertError("Login Error", message: "Wrong user name and/or password. Please try again")
                         case 1: alertError = createAlertError("Network Failure", message: "We are sorry! We are not able to connect to the network")
-                        default: alertError = createAlertError("Sorry!", message: "Unfortunately, we are experiences from technical difficulties")
+                        default: alertError = createAlertError("Sorry!", message: theError.localizedDescription)
                     }
                     completionHandlerForLogin(result: nil, errorAlert: alertError)
                 }
@@ -146,7 +147,7 @@ extension StudentInformation {
                     switch theError.code {
                     case 1: alertError = createAlertError("Network Failure", message: "We are sorry! We are not able to connect to the network")
                     case 3: alertError = createAlertError("Post Failed", message: "Unfortunately, we could not submit your location. Please try again")
-                    default: alertError = createAlertError("Sorry!", message: "Unfortunately, we are experiences from technical difficulties")
+                    default: alertError = createAlertError("Sorry!", message: theError.localizedDescription)
                     }
                     completionHandlerForPostLocation(result: nil, errorAlert: alertError)
                 }

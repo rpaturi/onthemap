@@ -114,6 +114,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             
             if let subtitleURL = annotation.subtitle {
                 UIApplication.sharedApplication().openURL(NSURL(string: subtitleURL!)!)
+            } else {
+                dispatch_async(dispatch_get_main_queue()) {
+                    let alertError = createAlertError("Invalid URL", message: "Sorry this URL is invalid! Please try another link.")
+                    self.presentViewController(alertError, animated: true, completion: nil)
+                }
             }
         }
     }

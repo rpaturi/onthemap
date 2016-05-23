@@ -63,12 +63,12 @@ class AddURLViewController: UIViewController {
                         self.presentViewController(theErrorAlert, animated: true, completion: nil)
                         return
                     }
+                    self.dismissViewControllerAnimated(true, completion: nil)
                 }
+                
+                self.dismissViewControllerAnimated(true, completion: nil)
             })
         }
-        
-        dismissViewControllerAnimated(true, completion: nil)
-
     }
 }
 

@@ -13,7 +13,7 @@ import FBSDKLoginKit
 class TableViewViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
 
     var studentCount: Int!
-    var studentData: [Student]!
+    
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var studentTableView: UITableView!
@@ -29,7 +29,6 @@ class TableViewViewController: UIViewController, UITableViewDataSource, UITableV
         
         //Find out how many tableView rows are needed
         if let student = StudentInformation.sharedInstance().studentInfo {
-            studentData = student
             studentCount = student.count
         }
 
@@ -44,7 +43,7 @@ class TableViewViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("StudentInformationCell", forIndexPath: indexPath)
         
-        let student = studentData[indexPath.row]
+        let student = StudentInformation.sharedInstance().studentInfo![indexPath.row]
         
         cell.textLabel?.text = "\(student.firstName) \(student.lastName)"
         cell.detailTextLabel?.text = "\(student.mediaURL)"
@@ -53,10 +52,15 @@ class TableViewViewController: UIViewController, UITableViewDataSource, UITableV
     
     //Open student URL in default browser when tapped 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let student = studentData[indexPath.row]
+        let student = StudentInformation.sharedInstance().studentInfo![indexPath.row]
         
-        UIApplication.sharedApplication().openURL(NSURL(string: student.mediaURL)!)
-        
+        if UIApplication.sharedApplication().openURL(NSURL(string: student.mediaURL)!) == false {
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                let alertError = createAlertError("Invalid URL", message: "Sorry this URL is invalid! Please try another link.")
+                self.presentViewController(alertError, animated: true, completion: nil)
+            }
+        }
     }
     
     @IBAction func refreshData(sender: AnyObject) {
@@ -70,7 +74,6 @@ class TableViewViewController: UIViewController, UITableViewDataSource, UITableV
             
             StudentInformation.sharedInstance().studentInfo = Student.studentsFromResults(results)
             if let studentInfo = StudentInformation.sharedInstance().studentInfo {
-                self.studentData = studentInfo
                 self.studentCount = studentInfo.count
                 
                 dispatch_async(dispatch_get_main_queue()) {
