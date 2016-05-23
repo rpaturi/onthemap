@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		DE014BDC1CEFE552006BE4F4 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE014BDA1CEFE552006BE4F4 /* FBSDKCoreKit.framework */; };
 		DE014BDD1CEFE552006BE4F4 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE014BDB1CEFE552006BE4F4 /* FBSDKLoginKit.framework */; };
+		DE014BDF1CF38E24006BE4F4 /* StudentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE014BDE1CF38E24006BE4F4 /* StudentData.swift */; };
 		DE0A82591CC40FBF001197B6 /* StudentConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0A82581CC40FBF001197B6 /* StudentConvenience.swift */; };
 		DE0A825B1CC4129D001197B6 /* StudentClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0A825A1CC4129D001197B6 /* StudentClient.swift */; };
 		DE252D4F1CDA96DF000C2592 /* AddURLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE252D4E1CDA96DF000C2592 /* AddURLViewController.swift */; };
@@ -28,6 +29,7 @@
 /* Begin PBXFileReference section */
 		DE014BDA1CEFE552006BE4F4 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		DE014BDB1CEFE552006BE4F4 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		DE014BDE1CF38E24006BE4F4 /* StudentData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentData.swift; sourceTree = "<group>"; };
 		DE0A82581CC40FBF001197B6 /* StudentConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentConvenience.swift; sourceTree = SOURCE_ROOT; };
 		DE0A825A1CC4129D001197B6 /* StudentClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentClient.swift; sourceTree = "<group>"; };
 		DE252D4E1CDA96DF000C2592 /* AddURLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddURLViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 			children = (
 				DEC36CF11CA9CA9C008BF861 /* Student.swift */,
 				DE0A825A1CC4129D001197B6 /* StudentClient.swift */,
+				DE014BDE1CF38E24006BE4F4 /* StudentData.swift */,
 				DEA5E5741CE90D9A007DF37C /* ErrorHandling.swift */,
 				DE0A82581CC40FBF001197B6 /* StudentConvenience.swift */,
 				DE9DFDE51CD40CCC0072445C /* Constants .swift */,
@@ -189,6 +192,7 @@
 				DE252D4F1CDA96DF000C2592 /* AddURLViewController.swift in Sources */,
 				DE326C4B1CA47AD400D149D2 /* InformationPostingViewController.swift in Sources */,
 				DE0A82591CC40FBF001197B6 /* StudentConvenience.swift in Sources */,
+				DE014BDF1CF38E24006BE4F4 /* StudentData.swift in Sources */,
 				DEC36CF21CA9CA9C008BF861 /* Student.swift in Sources */,
 				DE326C451CA47A7A00D149D2 /* LoginViewController.swift in Sources */,
 				DE0A825B1CC4129D001197B6 /* StudentClient.swift in Sources */,

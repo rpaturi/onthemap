@@ -28,7 +28,7 @@ class TableViewViewController: UIViewController, UITableViewDataSource, UITableV
         self.view.alpha = 1.0
         
         //Find out how many tableView rows are needed
-        if let student = StudentInformation.sharedInstance().studentInfo {
+        if let student = StudentData.sharedInstance().studentData {
             studentCount = student.count
         }
 
@@ -43,7 +43,7 @@ class TableViewViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("StudentInformationCell", forIndexPath: indexPath)
         
-        let student = StudentInformation.sharedInstance().studentInfo![indexPath.row]
+        let student = StudentData.sharedInstance().studentData![indexPath.row]
         
         cell.textLabel?.text = "\(student.firstName) \(student.lastName)"
         cell.detailTextLabel?.text = "\(student.mediaURL)"
@@ -52,7 +52,7 @@ class TableViewViewController: UIViewController, UITableViewDataSource, UITableV
     
     //Open student URL in default browser when tapped 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let student = StudentInformation.sharedInstance().studentInfo![indexPath.row]
+        let student = StudentData.sharedInstance().studentData![indexPath.row]
         
         if UIApplication.sharedApplication().openURL(NSURL(string: student.mediaURL)!) == false {
             
@@ -72,8 +72,8 @@ class TableViewViewController: UIViewController, UITableViewDataSource, UITableV
                 return
             }
             
-            StudentInformation.sharedInstance().studentInfo = Student.studentsFromResults(results)
-            if let studentInfo = StudentInformation.sharedInstance().studentInfo {
+            StudentData.sharedInstance().studentData = Student.studentsFromResults(results)
+            if let studentInfo = StudentData.sharedInstance().studentData {
                 self.studentCount = studentInfo.count
                 
                 dispatch_async(dispatch_get_main_queue()) {

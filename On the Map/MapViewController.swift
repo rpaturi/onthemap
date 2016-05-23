@@ -75,9 +75,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 return
             }
             
-            StudentInformation.sharedInstance().studentInfo = Student.studentsFromResults(results)
-            if let studentInfo = StudentInformation.sharedInstance().studentInfo {
-                self.createMapAnnotation(studentInfo)
+            StudentData.sharedInstance().studentData = Student.studentsFromResults(results)
+    
+            if let studentData = StudentData.sharedInstance().studentData {
+                self.createMapAnnotation(studentData)
             }
         }
     }

@@ -38,7 +38,7 @@ class InformationPostingViewController: UIViewController {
     @IBAction func findLocation(sender: AnyObject) {
         //Check that user has entered in a location
         if enterLocation.text?.isEmpty == true {
-            
+            self.view.alpha = 1.0
             let alert = UIAlertController(title: "Missing Location", message: "Please enter in a location", preferredStyle: .Alert)
             let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
             alert.addAction(action)
