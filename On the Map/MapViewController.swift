@@ -35,7 +35,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         mapView.delegate = self
         
         //Store student's first and last name
-        StudentInformation.sharedInstance().getStudentInformation { }
+        StudentInformation.sharedInstance().getStudentInformation { (result, errorAlert) in
+            if let theErrorAlert = errorAlert {
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.presentViewController(theErrorAlert, animated: true, completion: nil)
+                    return
+                }
+            }
+        }
         
         //Get student location data to create map pins
         getStudentLocation()

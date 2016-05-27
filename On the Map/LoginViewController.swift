@@ -76,7 +76,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         StudentInformation.sharedInstance().facebookLogin(FBSDKAccessToken.currentAccessToken().tokenString) { (result, error) in
             guard error == nil else {
                 dispatch_async(dispatch_get_main_queue()) {
-                    let errorAlert = createAlertError("Login Error", message: "Sorry we couldnlt log you in with Facebook. Please try again")
+                    let errorAlert = createAlertError("Login Error", message: "Sorry we couldn't log you in with Facebook. Please try again")
                     self.presentViewController(errorAlert, animated: true, completion: nil)
                     return
                 }

@@ -13,11 +13,23 @@ import CoreLocation
 extension StudentInformation {
     //MARK: GET functions
     
-    func getStudentInformation(completionHandlerForStudentInformation:() -> Void) {
+    func getStudentInformation(completionHandlerForStudentInformation:(result: AnyObject?, errorAlert: UIAlertController?) -> Void) {
 
         let methodString = "\(Method.UdacityMethods.user)/\(self.userID!)"
         
         taskForGETMethod(methodString, parameters: [:], apiScheme: Constants.UdacityURL.ApiScheme, apiHost: Constants.UdacityURL.ApiHost, apiPath: Constants.UdacityURL.ApiPath) { (result, error) in
+            
+            guard error == nil else {
+                if error != nil {
+                    
+                    let alertError: UIAlertController
+                    
+                    alertError = createAlertError("Sorry!", message: "The request timed out." )
+                    
+                    completionHandlerForStudentInformation(result: nil, errorAlert: alertError)
+                }
+                return
+            }
             
             guard let account = result["user"] as? [String : AnyObject] else {
                 print("We could not find \(result["user"])")
@@ -36,6 +48,8 @@ extension StudentInformation {
             
             self.firstName = nameFirst
             self.lastName = nameLast
+            
+            completionHandlerForStudentInformation(result: result, errorAlert: nil)
         }
         
     }
