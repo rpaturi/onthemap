@@ -19,8 +19,8 @@ extension StudentInformation {
         
         struct ParseURL {
             static let ApiScheme = "https"
-            static let ApiHost = "api.parse.com"
-            static let ApiPath = "/1/classes"
+            static let ApiHost = "parse.udacity.com"
+            static let ApiPath = "/parse/classes"
         }
     }
     
@@ -32,7 +32,7 @@ extension StudentInformation {
         
         struct ParseMethods {
             static let studentLocation = "/StudentLocation"
-            static let studentRecordLimit = "?100?order=-updatedAt"
+            static let studentRecordLimit = "limit"
         }
     }
     

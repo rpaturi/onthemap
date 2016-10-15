@@ -56,9 +56,9 @@ extension StudentInformation {
     
     func getStudentLocation(completionHandlerForStudentLocation: (result: AnyObject!, error: NSError?) -> Void) {
         
-        let methodString = "\(Method.ParseMethods.studentLocation)\(Method.ParseMethods.studentRecordLimit)"
+        let methodString = "\(Method.ParseMethods.studentLocation)"
         
-        taskForGETMethod(methodString, parameters: [:], apiScheme: Constants.ParseURL.ApiScheme, apiHost: Constants.ParseURL.ApiHost, apiPath: Constants.ParseURL.ApiPath, completionHandlerForGET: {(parsedResult, error) in
+        taskForGETMethod(methodString, parameters: [Method.ParseMethods.studentRecordLimit : "100"], apiScheme: Constants.ParseURL.ApiScheme, apiHost: Constants.ParseURL.ApiHost, apiPath: Constants.ParseURL.ApiPath, completionHandlerForGET: {(parsedResult, error) in
             
             if let error = error {
                 completionHandlerForStudentLocation(result: nil, error: error) 
@@ -66,6 +66,21 @@ extension StudentInformation {
                 completionHandlerForStudentLocation(result: parsedResult, error: nil)
             }
         })
+    }
+    
+    func getStudentLocation2(completionHandlerForStudentLocation: (result: AnyObject!, error: NSError?) -> Void) {
+        
+        let request = NSMutableURLRequest(URL: NSURL(string: "https://parse.udacity.com/parse/classes/StudentLocation")!)
+        request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
+        request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithRequest(request) { data, response, error in
+            if error != nil { // Handle error...
+                return
+            }
+            print(NSString(data: data!, encoding: NSUTF8StringEncoding))
+        }
+        task.resume()
     }
 
     

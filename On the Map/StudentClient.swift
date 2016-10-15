@@ -55,8 +55,8 @@ class StudentInformation {
         
         /* 2 Build the URL*/
         let request = NSMutableURLRequest(URL: urlFromParameters(apiScheme, host: apiHost, path: apiPath, parameters: parameters, withPathExtension: method))
-        
-        if apiHost == "api.parse.com" {
+        print(request)
+        if apiHost == "parse.udacity.com" {
             request.addValue(HTTPHeader.HeaderValue.parseAppID, forHTTPHeaderField: HTTPHeader.HeaderField.parseAppID)
             request.addValue(HTTPHeader.HeaderValue.parseAPIKey, forHTTPHeaderField: HTTPHeader.HeaderField.parseAPIkey)
         }
@@ -134,7 +134,7 @@ class StudentInformation {
             request.addValue("application/json", forHTTPHeaderField: "Accept")
         }
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        if apiHost == "api.parse.com" {
+        if apiHost == "parse.udacity.com" {
             request.addValue(HTTPHeader.HeaderValue.parseAppID, forHTTPHeaderField: HTTPHeader.HeaderField.parseAppID)
             request.addValue(HTTPHeader.HeaderValue.parseAPIKey, forHTTPHeaderField: HTTPHeader.HeaderField.parseAPIkey)
         }

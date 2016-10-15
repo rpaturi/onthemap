@@ -36,6 +36,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         //Store student's first and last name
         StudentInformation.sharedInstance().getStudentInformation { (result, errorAlert) in
+            
             if let theErrorAlert = errorAlert {
                 dispatch_async(dispatch_get_main_queue()) {
                     self.presentViewController(theErrorAlert, animated: true, completion: nil)
@@ -65,16 +66,28 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func getStudentLocation() {
-
+        
+        StudentInformation.sharedInstance().getStudentLocation2 { (result, error) in
+            if error != nil {
+                let alertError = createAlertError("Data Error", message: "Unfortunately, the data did not load properly. Please try again")
+                
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.presentViewController(alertError, animated: true, completion: nil)
+                    return
+                }
+            }
+        }
         //Get student location data from Parse server and create map annotations
         
         StudentInformation.sharedInstance().getStudentLocation { (result, error) in
             
             if let error = error {
-                print(error)
                 let alertError = createAlertError("Data Error", message: "Unfortunately, the data did not load properly. Please try again")
-                self.presentViewController(alertError, animated: true, completion: nil)
-                return
+                
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.presentViewController(alertError, animated: true, completion: nil)
+                    return
+                }
             }
             
             guard let results = result["results"] as? [[String:AnyObject]] else {
