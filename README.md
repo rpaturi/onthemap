@@ -4,3 +4,5 @@ Allows users to drop a pin on the map and share their location along with a pers
 
 ## Installation 
 Just clone/download the master branch of the On The Map repository that uses swift 2.3.
+
+You will need to register for an account on [Udacity's website](https://www.udacity.com/).
